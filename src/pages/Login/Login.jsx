@@ -2,11 +2,31 @@ import { useContext } from "react";
 import { AuthContext } from "../../components/AuthProvider/AuthProvider";
 import { useLocation, useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
+import { useForm } from "react-hook-form";
 
 const Login = () => {
-    const { googleLogin } = useContext(AuthContext);
+    const { signInUser, googleLogin } = useContext(AuthContext);
     const navigate = useNavigate();
-    const location = useLocation()
+    const location = useLocation();
+
+    const {
+        register,
+        handleSubmit,
+        formState: { errors },
+    } = useForm()
+    const onSubmit = (data) => {
+        const { email, password } = data;
+        console.log(email, password)
+
+        signInUser(email, password)
+            .then(() => {
+                toast("login successful")
+                navigate(location?.state || "/")
+            })
+            .catch(() => {
+                toast("invalid-credential")
+            })
+    }
 
     const handleGoogleLogin = () => {
         googleLogin()
@@ -21,7 +41,7 @@ const Login = () => {
             })
     }
 
-    
+
 
     return (
         <div className="my-14">
@@ -59,24 +79,27 @@ const Login = () => {
                         <span className="w-1/5 border-b dark:border-gray-400 lg:w-1/4"></span>
                     </div>
 
-                    <div className="mt-4">
-                        <label className="block mb-2 text-sm font-medium text-gray-600 dark:text-gray-200" >Email Address</label>
-                        <input id="LoggingEmailAddress" placeholder="Enter your email" name="email" className="block w-full px-4 py-2 text-gray-700 bg-white border rounded-lg dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 focus:border-blue-400 focus:ring-opacity-40 dark:focus:border-blue-300 focus:outline-none focus:ring focus:ring-blue-300" type="email" required />
-                    </div>
-
-                    <div className="mt-4">
-                        <div className="flex justify-between">
-                            <label className="block mb-2 text-sm font-medium text-gray-600 dark:text-gray-200" >Password</label>
+                    <form onSubmit={handleSubmit(onSubmit)} className="card-body">
+                        <div data-aos="fade-right" data-aos-delay="400" className="form-control">
+                            <label className="label">
+                                <span className="label-text">Email</span>
+                            </label>
+                            <input type="email" placeholder="email" className="input input-bordered"
+                                {...register("email", { required: true })} />
+                            {errors.email && <span className="text-red-600">This field is required</span>}
                         </div>
-
-                        <input id="loggingPassword" placeholder="Enter your password" name="password" className="block w-full px-4 py-2 text-gray-700 bg-white border rounded-lg dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 focus:border-blue-400 focus:ring-opacity-40 dark:focus:border-blue-300 focus:outline-none focus:ring focus:ring-blue-300" type="password" required />
-                    </div>
-
-                    <div className="mt-6">
-                        <button className="w-full px-6 py-3 text-sm font-medium tracking-wide text-white capitalize transition-colors duration-300 transform bg-gray-800 rounded-lg hover:bg-gray-700 focus:outline-none focus:ring focus:ring-gray-300 focus:ring-opacity-50">
-                            Login
-                        </button>
-                    </div>
+                        <div data-aos="fade-left" data-aos-delay="400" className="form-control">
+                            <label className="label">
+                                <span className="label-text">Password</span>
+                            </label>
+                            <input type="password" placeholder="password" className="input input-bordered"
+                                {...register("password", { required: true })} />
+                            {errors.password && <span className="text-red-600">This field is required</span>}
+                        </div>
+                        <div className="form-control mt-6">
+                            <button className="btn btn-success text-white font-medium">Login</button>
+                        </div>
+                    </form>
 
                     <div className="flex items-center justify-between mt-4">
                         <span className="w-1/5 border-b dark:border-gray-600 md:w-1/4"></span>
