@@ -12,7 +12,7 @@ const Navbar = () => {
         }} to="/">Home</NavLink></li>
         <li className="text-lg"><NavLink style={({ isActive }) => {
             return isActive ? { color: "plum" } : {};
-        }} to="/update-profile">All Jobs</NavLink></li>
+        }} to="/all-jobs">All Jobs</NavLink></li>
         <li className="text-lg"><NavLink style={({ isActive }) => {
             return isActive ? { color: "plum" } : {};
         }} to="/update-profile"> Applied Jobs</NavLink></li>
