@@ -1,7 +1,9 @@
+import { useContext } from "react";
 import { Link, NavLink } from "react-router-dom";
+import { AuthContext } from "../../../components/AuthProvider/AuthProvider";
 
 const Navbar = () => {
-
+    const { user } = useContext(AuthContext)
 
     const navLinks = <>
         <li className="text-lg"><NavLink style={({ isActive }) => {
@@ -9,16 +11,29 @@ const Navbar = () => {
         }} to="/">Home</NavLink></li>
         <li className="text-lg"><NavLink style={({ isActive }) => {
             return isActive ? { color: "plum" } : {};
-        }} to="/update-profile">Update Profile</NavLink></li>
-
-        { <li className="text-lg"><NavLink style={({ isActive }) => {
+        }} to="/update-profile">All Jobs</NavLink></li>
+        <li className="text-lg"><NavLink style={({ isActive }) => {
             return isActive ? { color: "plum" } : {};
-        }} to="/contact">Contact Us</NavLink></li>}
+        }} to="/update-profile"> Applied Jobs</NavLink></li>
+
+        {
+            <>
+                <li className="text-lg"><NavLink style={({ isActive }) => {
+                    return isActive ? { color: "plum" } : {};
+                }} to="/contact">Add A Job</NavLink></li>
+                <li className="text-lg"><NavLink style={({ isActive }) => {
+                    return isActive ? { color: "plum" } : {};
+                }} to="/contact">My Jobs</NavLink></li>
+            </>
+        }
+        <li className="text-lg"><NavLink style={({ isActive }) => {
+            return isActive ? { color: "plum" } : {};
+        }} to="/update-profile"> Blogs</NavLink></li>
     </>
 
 
     return (
-        <div className="navbar bg-neutral text-white">
+        <div className="navbar bg-base-100">
             <div className="navbar-start">
                 <div className="dropdown">
                     <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
@@ -28,7 +43,7 @@ const Navbar = () => {
                         {navLinks}
                     </ul>
                 </div>
-                <Link to="/" className="btn btn-ghost text-xl md:text-3xl font-medium md:font-bold text-gray-400">Home<span className="text-[#1DD100]">Vista</span></Link>
+                <Link to="/" className="btn btn-ghost text-xl md:text-3xl font-medium md:font-bold text-gray-400">Explore Jobs</Link>
             </div>
             <div className="navbar-center hidden lg:flex">
                 <ul className="menu menu-horizontal px-1">
@@ -46,7 +61,7 @@ const Navbar = () => {
                         </div>
                         <ul tabIndex={0} className="mt-3 z-[10] p-2 shadow menu menu-sm text-white font-bold dropdown-content bg-neutral w-32">
                             <li className="hover:bg-gray-500"><Link to="/user-profile">User Profile</Link></li>
-                            <li className="hover:bg-gray-500"><Link to="/login"><button onClick={handleLogOut}>Logout</button></Link></li>
+                            <li className="hover:bg-gray-500"><Link to="/login"><button>Logout</button></Link></li>
                         </ul>
                     </div>
                     :
