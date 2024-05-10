@@ -1,11 +1,11 @@
 
 const Banner = () => {
     return (
-        <div className='my-4 md:min-h-[700px] bg-cover' style={{ backgroundImage: 'url(https://i.ibb.co/4pXRcrj/banner.jpg)' }}>
+        <div className='my-4 md:min-h-[700px] bg-cover border-2 rounded-lg p-6' style={{ backgroundImage: 'url(https://i.ibb.co/4pXRcrj/banner.jpg)' }}>
             <div className='top-1/2 mt-10 right-10'>
-                <div className='text-right'>
+                <div className='text-right lg:mt-96'>
                     <h2 className='text-xl md:text-2xl lg:text-5xl mb-6 font-bold'>Begin Your Career Journey <br /> with Explore Job</h2>
-                    <p className='text-xl'>Uncover limitless opportunities and find your ideal fit. Explore Job connects you <br /> with customized job listings and resources to guide your path to success. Start your search today!</p>
+                    <p className='text-base lg:text-xl'>Uncover limitless opportunities and find your ideal fit. Explore Job connects you <br /> with customized job listings and resources to guide your path to success. Start your search today!</p>
                 </div>
             </div>
             {/* <div>

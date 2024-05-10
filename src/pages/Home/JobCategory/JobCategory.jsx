@@ -11,7 +11,7 @@ const JobCategory = ({ jobs }) => {
             <h2 className='my-10 text-center text-5xl font-semibold'>Popular Job Categories</h2>
             <p className='text-center mb-14 text-2xl'>10 jobs live</p>
             <Tabs>
-                <div className='font-bold text-center text-2xl text-gray-700'>
+                <div className='font-bold text-center text-2xl'>
                     <TabList>
                         <Tab>All Jobs</Tab>
                         <Tab>Onsite Jobs</Tab>
