@@ -1,11 +1,10 @@
-import { useLoaderData } from "react-router-dom";
+import { Link, useLoaderData } from "react-router-dom";
 
 const AllJobs = () => {
     const jobs = useLoaderData();
     console.log(jobs)
     return (
         <div>
-            <h2>All jobs here</h2>
             <div className="overflow-x-auto">
                 <table className="table table-md">
                     <thead>
@@ -24,7 +23,7 @@ const AllJobs = () => {
                                 <td>{job.posting_date}</td>
                                 <td>{job.deadline}</td>
                                 <td>{job.min_salary}-{job.max_salary}</td>
-                                <td><button className="btn btn-sm">View Details</button></td>
+                                <td><Link to=""><button className="btn btn-sm">View Details</button></Link></td>
                             </tr>)
                         }
 

@@ -24,27 +24,27 @@ const Navbar = () => {
 
     const navLinks = <>
         <li className="text-lg"><NavLink style={({ isActive }) => {
-            return isActive ? { color: "plum" } : {};
+            return isActive ? { backgroundColor: "green" } : {};
         }} to="/">Home</NavLink></li>
         <li className="text-lg"><NavLink style={({ isActive }) => {
-            return isActive ? { color: "plum" } : {};
+            return isActive ? { backgroundColor: "green" } : {};
         }} to="/all-jobs">All Jobs</NavLink></li>
         <li className="text-lg"><NavLink style={({ isActive }) => {
-            return isActive ? { color: "plum" } : {};
+            return isActive ? { backgroundColor: "green" } : {};
         }} to="/update-profile"> Applied Jobs</NavLink></li>
 
-        { user &&
+        {user &&
             <>
                 <li className="text-lg"><NavLink style={({ isActive }) => {
-                    return isActive ? { color: "plum" } : {};
+                    return isActive ? { backgroundColor: "green" } : {};
                 }} to="/add-job">Add a Job</NavLink></li>
                 <li className="text-lg"><NavLink style={({ isActive }) => {
-                    return isActive ? { color: "plum" } : {};
+                    return isActive ? { backgroundColor: "green" } : {};
                 }} to="/my-jobs">My Jobs</NavLink></li>
             </>
         }
         <li className="text-lg"><NavLink style={({ isActive }) => {
-            return isActive ? { color: "plum" } : {};
+            return isActive ? { backgroundColor: "green" } : {};
         }} to="/blogs"> Blogs</NavLink></li>
     </>
 

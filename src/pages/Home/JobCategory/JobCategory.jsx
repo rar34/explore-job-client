@@ -5,11 +5,11 @@ import PropTypes from 'prop-types'
 
 
 const JobCategory = ({ jobs }) => {
-    console.log(jobs)
+    // console.log(jobs)
     return (
         <div className='my-24'>
             <h2 className='my-10 text-center text-5xl font-semibold'>Popular Job Categories</h2>
-            <p className='text-center mb-14 text-2xl'>10 jobs live</p>
+            <p className='text-center mb-14 text-green-600 text-2xl'>{jobs.length} jobs live</p>
             <Tabs>
                 <div className='font-bold text-center text-2xl'>
                     <TabList>

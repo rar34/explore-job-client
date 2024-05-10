@@ -1,10 +1,11 @@
+import { FaFacebookSquare, FaGithubSquare, FaLinkedinIn, FaTwitterSquare } from "react-icons/fa";
 
 const Footer = () => {
     return (
         <footer className="footer p-10 bg-base-200 text-base-content">
             <aside>
                 <img className="w-40" src="https://i.ibb.co/3NfPD4C/Career-Finder.png" alt="" />
-                <p>Explore Job Ltd.<br />Providing reliable tech since 1992</p>
+                <p>Explore Job Ltd.<br />Providing reliable Service since 2000</p>
             </aside>
             <nav>
                 <h6 className="footer-title">Services</h6>
@@ -21,10 +22,13 @@ const Footer = () => {
                 <a className="link link-hover">Press kit</a>
             </nav>
             <nav>
-                <h6 className="footer-title">Legal</h6>
-                <a className="link link-hover">Terms of use</a>
-                <a className="link link-hover">Privacy policy</a>
-                <a className="link link-hover">Cookie policy</a>
+                <h6 className="footer-title">Connect with</h6>
+                <div className="flex gap-6 text-3xl">
+                    <a className="link link-hover"><FaFacebookSquare /></a>
+                    <a className="link link-hover"><FaTwitterSquare /></a>
+                    <a className="link link-hover"><FaGithubSquare /></a>
+                    <a className="link link-hover"><FaLinkedinIn /></a>
+                </div>
             </nav>
         </footer>
     );

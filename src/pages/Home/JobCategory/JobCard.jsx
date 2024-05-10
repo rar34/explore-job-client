@@ -23,7 +23,7 @@ const JobCard = ({ job }) => {
 
                 <div className="flex items-center">
 
-                    <Link><button className="btn btn-success text-white" tabIndex="0" role="link">View Details</button></Link>
+                    <Link to=""><button className="btn btn-success text-white" tabIndex="0" role="link">View Details</button></Link>
                 </div>
             </div>
         </div>
