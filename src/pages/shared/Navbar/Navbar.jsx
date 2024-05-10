@@ -29,7 +29,7 @@ const Navbar = () => {
         }
         <li className="text-lg"><NavLink style={({ isActive }) => {
             return isActive ? { color: "plum" } : {};
-        }} to="/update-profile"> Blogs</NavLink></li>
+        }} to="/blogs"> Blogs</NavLink></li>
     </>
 
 
