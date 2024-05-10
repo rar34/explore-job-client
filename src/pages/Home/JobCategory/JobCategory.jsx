@@ -5,7 +5,7 @@ import PropTypes from 'prop-types'
 
 
 const JobCategory = ({ jobs }) => {
-    // console.log(jobs)
+    console.log(jobs)
     return (
         <div className='my-24'>
             <h2 className='my-10 text-center text-5xl font-semibold'>Popular Job Categories</h2>
@@ -14,7 +14,7 @@ const JobCategory = ({ jobs }) => {
                 <div className='font-bold text-center text-2xl text-gray-700'>
                     <TabList>
                         <Tab>All Jobs</Tab>
-                        <Tab>On Site Jobs</Tab>
+                        <Tab>Onsite Jobs</Tab>
                         <Tab>Remote Jobs</Tab>
                         <Tab>Hybrid Jobs</Tab>
                         <Tab>Part Time Jobs</Tab>
@@ -48,5 +48,5 @@ const JobCategory = ({ jobs }) => {
 export default JobCategory;
 
 JobCategory.propTypes = {
-    jobs: PropTypes.object
+    jobs: PropTypes.array
 }

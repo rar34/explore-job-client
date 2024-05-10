@@ -1,39 +1,29 @@
+import { Link } from "react-router-dom";
+import PropTypes from 'prop-types'
 
-const JobCard = () => {
+
+const JobCard = ({ job }) => {
+    const { posted_by, title, posting_date, deadline, min_salary, max_salary, applicants, category } = job || {};
     return (
-        <div className="flex max-w-md overflow-hidden bg-white rounded-lg shadow-lg dark:bg-gray-800">
-            <div className="w-1/3 bg-cover" style={{backgroundImage: 'url(https://images.unsplash.com/photo-1494726161322-5360d4d0eeae?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=334&q=80)'}}></div>
+        <div className="max-w-2xl px-8 py-4 bg-white rounded-lg border-2 dark:bg-gray-800">
+            <div className="flex items-center justify-between">
+                <span className="text-sm font-light text-gray-600 dark:text-gray-400">Posted in: {posting_date}</span>
+                <p className="px-3 py-1 text-sm font-bold text-gray-100 transition-colors duration-300 transform bg-green-500 rounded cursor-pointer hover:bg-gray-500" tabIndex="0" role="button">{category}</p>
+            </div>
 
-            <div className="w-2/3 p-4 md:p-4">
-                <h1 className="text-xl font-bold text-gray-800 dark:text-white">Backpack</h1>
+            <div className="mt-2">
+                <p href="#" className="text-xl font-bold text-gray-700 dark:text-white hover:text-gray-600 dark:hover:text-gray-200 hover:underline" tabIndex="0" role="link">{title}</p>
+                <p className="mt-2 text-gray-600 font-semibold dark:text-gray-300">Posted By: {posted_by}</p>
+                <p className="mt-2 text-gray-600 font-medium dark:text-gray-300">Application Deadline: {deadline}</p>
+                <p className="mt-2 text-sky-600 font-medium dark:text-gray-300">Salary Range: {min_salary}-{max_salary}</p>
+            </div>
 
-                <p className="mt-2 text-sm text-gray-600 dark:text-gray-400">Lorem ipsum dolor sit amet consectetur adipisicing elit In odit</p>
+            <div className="flex items-center justify-between mt-4">
+                <p href="#" className="text-blue-600 dark:text-blue-400 hover:underline" tabIndex="0" role="link">Total Applicant: {applicants}</p>
 
-                <div className="flex mt-2 item-center">
-                    <svg className="w-5 h-5 text-gray-700 fill-current dark:text-gray-300" viewBox="0 0 24 24">
-                        <path d="M12 17.27L18.18 21L16.54 13.97L22 9.24L14.81 8.63L12 2L9.19 8.63L2 9.24L7.46 13.97L5.82 21L12 17.27Z" />
-                    </svg>
+                <div className="flex items-center">
 
-                    <svg className="w-5 h-5 text-gray-700 fill-current dark:text-gray-300" viewBox="0 0 24 24">
-                        <path d="M12 17.27L18.18 21L16.54 13.97L22 9.24L14.81 8.63L12 2L9.19 8.63L2 9.24L7.46 13.97L5.82 21L12 17.27Z" />
-                    </svg>
-
-                    <svg className="w-5 h-5 text-gray-700 fill-current dark:text-gray-300" viewBox="0 0 24 24">
-                        <path d="M12 17.27L18.18 21L16.54 13.97L22 9.24L14.81 8.63L12 2L9.19 8.63L2 9.24L7.46 13.97L5.82 21L12 17.27Z" />
-                    </svg>
-
-                    <svg className="w-5 h-5 text-gray-500 fill-current" viewBox="0 0 24 24">
-                        <path d="M12 17.27L18.18 21L16.54 13.97L22 9.24L14.81 8.63L12 2L9.19 8.63L2 9.24L7.46 13.97L5.82 21L12 17.27Z" />
-                    </svg>
-
-                    <svg className="w-5 h-5 text-gray-500 fill-current" viewBox="0 0 24 24">
-                        <path d="M12 17.27L18.18 21L16.54 13.97L22 9.24L14.81 8.63L12 2L9.19 8.63L2 9.24L7.46 13.97L5.82 21L12 17.27Z" />
-                    </svg>
-                </div>
-
-                <div className="flex justify-between mt-3 item-center">
-                    <h1 className="text-lg font-bold text-gray-700 dark:text-gray-200 md:text-xl">$220</h1>
-                    <button className="px-2 py-1 text-xs font-bold text-white uppercase transition-colors duration-300 transform bg-gray-800 rounded dark:bg-gray-700 hover:bg-gray-700 dark:hover:bg-gray-600 focus:outline-none focus:bg-gray-700 dark:focus:bg-gray-600">Add to Cart</button>
+                    <Link><button className="btn btn-success text-white" tabIndex="0" role="link">View Details</button></Link>
                 </div>
             </div>
         </div>
@@ -41,3 +31,6 @@ const JobCard = () => {
 };
 
 export default JobCard;
+JobCard.propTypes = {
+    job: PropTypes.object
+}
