@@ -9,6 +9,8 @@ import ErrorPage from "../../pages/ErrorPage/ErrorPage";
 import AddJob from "../../pages/AddJob/AddJob";
 import PrivateRoutes from "./PrivateRoutes";
 
+
+
 const router = createBrowserRouter([
   {
     path: "/",
@@ -18,7 +20,7 @@ const router = createBrowserRouter([
       {
         path: '/',
         element: <Home></Home>,
-        loader: () => fetch(`${import.meta.env.VITE_API_URL}/jobs`)
+        // loader: () => fetch(`${import.meta.env.VITE_API_URL}/jobs`)
       },
       {
         path: '/login',

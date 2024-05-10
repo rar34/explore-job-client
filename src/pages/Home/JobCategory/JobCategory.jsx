@@ -2,14 +2,28 @@ import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
 import 'react-tabs/style/react-tabs.css';
 import JobCard from './JobCard';
 import PropTypes from 'prop-types'
+import { useQuery } from '@tanstack/react-query';
 
 
-const JobCategory = ({ jobs }) => {
+
+const JobCategory = () => {
     // console.log(jobs)
+    const { isPending, data: jobs } = useQuery({
+        queryKey: ['jobs'],
+        queryFn: async () => {
+            const res = await fetch(`${import.meta.env.VITE_API_URL}/jobs`);
+            return res.json();
+        }
+    })
+
+    if (isPending) {
+        return <div className='flex justify-center items-center text-3xl'><span className="loading loading-spinner loading-lg"></span></div>
+    }
+
     return (
         <div className='my-24'>
             <h2 className='my-10 text-center text-5xl font-semibold'>Popular Job Categories</h2>
-            <p className='text-center mb-14 text-green-600 text-2xl'>{jobs.length} jobs live</p>
+            {/* <p className='text-center mb-14 text-green-600 text-2xl'>{jobs.length} jobs live</p> */}
             <Tabs>
                 <div className='font-bold text-center text-2xl'>
                     <TabList>
