@@ -1,9 +1,10 @@
 import { useContext } from "react";
 import { Link, NavLink } from "react-router-dom";
 import { AuthContext } from "../../../components/AuthProvider/AuthProvider";
+import { toast } from "react-toastify";
 
 const Navbar = () => {
-    const { user } = useContext(AuthContext)
+    const { user, logOut } = useContext(AuthContext)
 
     const navLinks = <>
         <li className="text-lg"><NavLink style={({ isActive }) => {
@@ -30,6 +31,18 @@ const Navbar = () => {
             return isActive ? { color: "plum" } : {};
         }} to="/update-profile"> Blogs</NavLink></li>
     </>
+
+
+const handleLogOut = () => {
+    logOut()
+        .then(result => {
+            toast("log out successful")
+            console.log(result.user)
+        })
+        .catch(error => {
+            console.log(error)
+        })
+}
 
 
     return (
@@ -61,7 +74,7 @@ const Navbar = () => {
                         </div>
                         <ul tabIndex={0} className="mt-3 z-[10] p-2 shadow menu menu-sm text-white font-bold dropdown-content bg-neutral w-32">
                             <li className="hover:bg-gray-500"><Link to="/user-profile">User Profile</Link></li>
-                            <li className="hover:bg-gray-500"><Link to="/login"><button>Logout</button></Link></li>
+                            <li className="hover:bg-gray-500"><Link to="/login"><button onClick={handleLogOut}>Logout</button></Link></li>
                         </ul>
                     </div>
                     :

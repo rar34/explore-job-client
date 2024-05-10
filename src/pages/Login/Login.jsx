@@ -1,6 +1,7 @@
 import { useContext } from "react";
 import { AuthContext } from "../../components/AuthProvider/AuthProvider";
 import { useLocation, useNavigate } from "react-router-dom";
+import { toast } from "react-toastify";
 
 const Login = () => {
     const { googleLogin } = useContext(AuthContext);
@@ -11,14 +12,16 @@ const Login = () => {
         googleLogin()
             .then((result) => {
                 if (result.user) {
-                    // toast("login successful")
+                    toast("login successful")
                     navigate(location?.state || "/")
                 }
             })
             .catch(() => {
-                // toast("invalid-credential")
+                toast("invalid-credential")
             })
     }
+
+    
 
     return (
         <div className="my-14">
