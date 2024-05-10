@@ -1,6 +1,6 @@
 import { useContext } from "react";
 import { AuthContext } from "../../components/AuthProvider/AuthProvider";
-import { useLocation, useNavigate } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import { useForm } from "react-hook-form";
 
@@ -104,7 +104,7 @@ const Login = () => {
                     <div className="flex items-center justify-between mt-4">
                         <span className="w-1/5 border-b dark:border-gray-600 md:w-1/4"></span>
 
-                        <a href="#" className="text-xs text-gray-500 uppercase dark:text-gray-400 hover:underline">or sign up</a>
+                        <Link to="/register" href="#" className="text-xs text-gray-500 uppercase dark:text-gray-400 hover:underline">or sign up</Link>
 
                         <span className="w-1/5 border-b dark:border-gray-600 md:w-1/4"></span>
                     </div>
