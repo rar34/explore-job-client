@@ -8,8 +8,15 @@ import 'swiper/css/effect-fade';
 
 const Banner = () => {
     return (
-        <div className='my-4'>
-            <Swiper
+        <div className='my-4 md:min-h-[700px] bg-cover relative' style={{ backgroundImage: 'url(https://i.ibb.co/4pXRcrj/banner.jpg)' }}>
+            <div className='absolute top-1/2 mt-10 right-10'>
+                <div className='text-right'>
+                    <h2 className='text-5xl mb-6 font-bold'>Begin Your Career Journey <br /> with Explore Job</h2>
+                    <p className='text-xl'>Uncover limitless opportunities and find your ideal fit. Explore Job connects you <br /> with customized job listings and resources to guide your path to success. Start your search today!</p>
+                </div>
+            </div>
+            {/* <div>
+                <Swiper
                 modules={[Navigation, Pagination, Scrollbar, A11y, EffectFade, Autoplay]}
                 spaceBetween={50}
                 effect="fade"
@@ -70,7 +77,22 @@ const Banner = () => {
                         </div>
                     </div>
                 </SwiperSlide>
+                <div className="hero md:min-h-[750px]" style={{ backgroundImage: 'url(https://i.ibb.co/fFBT7Xr/coxsbazar.jpg)' }}>
+                    <SwiperSlide>
+                        <div>
+                            <div className="hero-overlay bg-opacity-60"></div>
+                            <div className="hero-content text-neutral-content">
+                                <div className="">
+                                    <h1 className="mb-5 text-3xl md:text-5xl font-bold">Cox&apos;s Bazar, <br /> Bangladesh</h1>
+                                    <p className="mb-5">Cox&apos;s Bazar, Bangladesh: Longest natural sea beach, vibrant culture, seafood delights, and stunning sunsets attract tourists worldwide.</p>
+                                    <a href='#explore' className="btn btn-success text-white">Explore More</a>
+                                </div>
+                            </div>
+                        </div>
+                    </SwiperSlide>
+                </div>
             </Swiper>
+            </div> */}
         </div>
     );
 };

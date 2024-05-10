@@ -56,7 +56,7 @@ const handleLogOut = () => {
                         {navLinks}
                     </ul>
                 </div>
-                <Link to="/" className="btn btn-ghost text-xl md:text-3xl font-medium md:font-bold text-gray-400">Explore Jobs</Link>
+                <Link to="/" className="w-32"><img src="https://i.ibb.co/3NfPD4C/Career-Finder.png" alt="" /></Link>
             </div>
             <div className="navbar-center hidden lg:flex">
                 <ul className="menu menu-horizontal px-1">
