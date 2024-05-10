@@ -6,36 +6,43 @@ import Register from "../../pages/Register/Register";
 import AllJobs from "../../pages/AllJobs/AllJobs";
 import Blogs from "../../pages/Blogs/Blogs";
 import ErrorPage from "../../pages/ErrorPage/ErrorPage";
+import AddJob from "../../pages/AddJob/AddJob";
+import PrivateRoutes from "./PrivateRoutes";
 
 const router = createBrowserRouter([
-    {
-      path: "/",
-      element: <Main></Main>,
-      errorElement: <ErrorPage></ErrorPage>,
-      children:[
-        {
-            path:'/',
-            element: <Home></Home>,
-            loader: ()=> fetch(`${import.meta.env.VITE_API_URL}/jobs`)
-        },
-        {
-          path: '/login',
-          element: <Login></Login>
-        },
-        {
-          path: "/register",
-          element: <Register></Register>
-        },
-        {
-          path: '/all-jobs',
-          element: <AllJobs></AllJobs>
-        },
-        {
-          path: "/blogs",
-          element: <Blogs></Blogs>
-        }
-      ]
-    },
-  ]);
+  {
+    path: "/",
+    element: <Main></Main>,
+    errorElement: <ErrorPage></ErrorPage>,
+    children: [
+      {
+        path: '/',
+        element: <Home></Home>,
+        loader: () => fetch(`${import.meta.env.VITE_API_URL}/jobs`)
+      },
+      {
+        path: '/login',
+        element: <Login></Login>
+      },
+      {
+        path: "/register",
+        element: <Register></Register>
+      },
+      {
+        path: '/all-jobs',
+        element: <AllJobs></AllJobs>,
+        loader: () => fetch(`${import.meta.env.VITE_API_URL}/jobs`)
+      },
+      {
+        path: "/add-job",
+        element: <PrivateRoutes><AddJob /></PrivateRoutes>
+      },
+      {
+        path: "/blogs",
+        element: <Blogs></Blogs>
+      }
+    ]
+  },
+]);
 
-  export default router;
+export default router;

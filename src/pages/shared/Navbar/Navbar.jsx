@@ -33,14 +33,14 @@ const Navbar = () => {
             return isActive ? { color: "plum" } : {};
         }} to="/update-profile"> Applied Jobs</NavLink></li>
 
-        {
+        { user &&
             <>
                 <li className="text-lg"><NavLink style={({ isActive }) => {
                     return isActive ? { color: "plum" } : {};
-                }} to="/contact">Add A Job</NavLink></li>
+                }} to="/add-job">Add a Job</NavLink></li>
                 <li className="text-lg"><NavLink style={({ isActive }) => {
                     return isActive ? { color: "plum" } : {};
-                }} to="/contact">My Jobs</NavLink></li>
+                }} to="/my-jobs">My Jobs</NavLink></li>
             </>
         }
         <li className="text-lg"><NavLink style={({ isActive }) => {
