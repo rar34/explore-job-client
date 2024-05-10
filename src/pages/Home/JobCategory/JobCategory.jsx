@@ -29,16 +29,32 @@ const JobCategory = ({ jobs }) => {
                     </div>
                 </TabPanel>
                 <TabPanel>
-                    <h2>Any content onsite</h2>
+                    <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mt-10'>
+                        {
+                            jobs.filter(j => j.category === 'Onsite Job').map(job => <JobCard key={job._id} job={job}></JobCard>)
+                        }
+                    </div>
                 </TabPanel>
                 <TabPanel>
-                    <h2>Any content remote</h2>
+                    <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mt-10'>
+                        {
+                            jobs.filter(j => j.category === 'Remote Job').map(job => <JobCard key={job._id} job={job}></JobCard>)
+                        }
+                    </div>
                 </TabPanel>
                 <TabPanel>
-                    <h2>Any content hybrid</h2>
+                    <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mt-10'>
+                        {
+                            jobs.filter(j => j.category === 'Hybrid Job').map(job => <JobCard key={job._id} job={job}></JobCard>)
+                        }
+                    </div>
                 </TabPanel>
                 <TabPanel>
-                    <h2>Any content part time</h2>
+                    <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mt-10'>
+                        {
+                            jobs.filter(j => j.category === 'Part Time Job').map(job => <JobCard key={job._id} job={job}></JobCard>)
+                        }
+                    </div>
                 </TabPanel>
             </Tabs>
         </div>
