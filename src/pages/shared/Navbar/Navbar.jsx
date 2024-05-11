@@ -35,7 +35,7 @@ const Navbar = () => {
             <>
                 <li className="text-base"><NavLink style={({ isActive }) => {
                     return isActive ? { backgroundColor: "green" } : {};
-                }} to="/update-profile"> Applied Jobs</NavLink></li>
+                }} to="/applied-jobs"> Applied Jobs</NavLink></li>
                 <li className="text-base"><NavLink style={({ isActive }) => {
                     return isActive ? { backgroundColor: "green" } : {};
                 }} to="/add-job">Add a Job</NavLink></li>

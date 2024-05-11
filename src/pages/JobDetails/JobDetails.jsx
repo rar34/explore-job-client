@@ -12,7 +12,7 @@ const JobDetails = () => {
     const job = useLoaderData();
     // console.log(job)
 
-    const { _id, posted_by, title, posting_date, deadline, min_salary, max_salary, applicants, category } = job || {};
+    const { _id, posted_by, title, posting_date, deadline, min_salary, max_salary, applicants, category, photo, description } = job || {};
     // console.log(job.email)
 
 
@@ -45,7 +45,7 @@ const JobDetails = () => {
         <div className="flex justify-center my-10">
             <div className="overflow-hidden bg-white rounded-lg shadow-md dark:bg-gray-800">
                 <div className="relative">
-                    <img className="object-cover w-full" src="https://images.unsplash.com/photo-1550439062-609e1531270e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60" alt="Article" />
+                    <img className="object-cover w-full" src={photo} alt="Article" />
 
                     <p className="bg-green-200 absolute top-3 right-3 font-bold p-2">{category}</p>
                 </div>
@@ -54,6 +54,7 @@ const JobDetails = () => {
                         <span className="text-lg font-medium text-blue-600 uppercase dark:text-blue-400">Application deadline: {new Date(deadline).toLocaleDateString()}</span>
                         <a href="#" className="block mt-2 text-xl font-bold text-gray-800 transition-colors duration-300 transform dark:text-white hover:text-gray-600 hover:underline" tabIndex="0" role="link">{title}</a>
                         <a href="#" className="block mt-2 text-lg font-semibold text-gray-800 transition-colors duration-300 transform dark:text-white hover:text-gray-600 hover:underline" tabIndex="0" role="link">Posted By: {posted_by}</a>
+                        <p>{description}</p>
                         <p className="mt-2 text-sm text-gray-600 dark:text-gray-400">Job posted at: {posting_date}</p>
                         <p><span className="font-bold">Salary Range:</span> {min_salary}Tk - {max_salary}Tk</p>
                         <p className="font-bold">Applicants: {applicants}</p>

@@ -1,21 +1,33 @@
-import { useContext, useEffect, useState } from "react";
+import { useContext } from "react";
 import { Link } from "react-router-dom";
 import { AuthContext } from "../../components/AuthProvider/AuthProvider";
-import axios from "axios";
+import { useQuery } from "@tanstack/react-query";
 
 const MyJobs = () => {
 
     const { user } = useContext(AuthContext);
-    const [jobs, setJobs] = useState([]);
+    // const [jobs, setJobs] = useState([]);
 
-    useEffect(() => {
-        const getJobs = async () => {
-            const { data } = await axios(`${import.meta.env.VITE_API_URL}/jobs/${user?.email}`);
-            setJobs(data);
+    const { isPending, error, isError, data: jobs } = useQuery({
+        queryKey: ['jobs'],
+        queryFn: async () => {
+            const res = await fetch(`${import.meta.env.VITE_API_URL}/jobs/${user?.email}`);
+            return res.json();
         }
-        getJobs();
-    }, [user?.email])
-    console.log(jobs)
+    })
+
+    if (isPending) {
+        return <div className='flex justify-center items-center text-3xl'><span className="loading loading-spinner loading-lg"></span></div>
+    }
+
+    if (isError) {
+        return <p>{error.message}</p>
+    }
+
+
+   if(jobs.length === 0){
+    return <p className="text-2xl font-bold text-red-500">No jobs available.........</p>
+   }
 
     return (
         <div>

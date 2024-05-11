@@ -24,7 +24,7 @@ const JobCategory = () => {
     }
 
     return (
-        <div className='my-24'>
+        <div className='my-24' id='allJobs'>
             <h2 className='my-10 text-center text-5xl font-semibold'>Popular Job Categories</h2>
             {/* <p className='text-center mb-14 text-green-600 text-2xl'>{jobs.length} jobs live</p> */}
             <Tabs>
