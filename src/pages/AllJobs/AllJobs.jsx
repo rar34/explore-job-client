@@ -16,13 +16,20 @@ const AllJobs = () => {
         return <div className='flex justify-center items-center text-3xl'><span className="loading loading-spinner loading-lg"></span></div>
     }
 
-    if(isError){
+    if (isError) {
         return <p>{error.message}</p>
     }
 
-    
+
     return (
         <div>
+            <div className="flex justify-center my-10">
+                <label className="input rounded-none rounded-l-lg input-bordered flex items-center gap-2">
+                    <input type="text" className="grow" placeholder="Search your job" />
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" fill="currentColor" className="w-4 h-4 opacity-70"><path fillRule="evenodd" d="M9.965 11.026a5 5 0 1 1 1.06-1.06l2.755 2.754a.75.75 0 1 1-1.06 1.06l-2.755-2.754ZM10.5 7a3.5 3.5 0 1 1-7 0 3.5 3.5 0 0 1 7 0Z" clipRule="evenodd" /></svg>
+                </label>
+                <button className="p-3 bg-green-700 text-white font-bold rounded-r-lg">Search</button>
+            </div>
             <div className="overflow-x-auto">
                 <table className="table table-md">
                     <thead>
@@ -38,10 +45,10 @@ const AllJobs = () => {
                         {
                             jobs.map((job) => <tr key={job._id}>
                                 <td>{job.title}</td>
-                                <td>{job.posting_date}</td>
-                                <td>{job.deadline}</td>
+                                <td>{new Date(job.posting_date).toLocaleDateString()}</td>
+                                <td>{new Date(job.deadline).toLocaleDateString()}</td>
                                 <td>{job.min_salary}-{job.max_salary}</td>
-                                <td><Link to=""><button className="btn btn-sm">View Details</button></Link></td>
+                                <td><Link to=""><button className="btn btn-outline btn-success btn-sm">View Details</button></Link></td>
                             </tr>)
                         }
 
