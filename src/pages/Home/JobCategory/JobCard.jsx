@@ -7,7 +7,7 @@ const JobCard = ({ job }) => {
     return (
         <div className="max-w-2xl px-8 py-4 bg-base-100 rounded-lg border-2">
             <div className="flex items-center justify-between">
-                <span className="text-sm font-light bg-gray-400  text-white rounded-md p-2">Application Deadline: {deadline}</span>
+                <span className="text-sm font-light bg-gray-400  text-white rounded-md p-2">Deadline: {new Date(deadline).toLocaleDateString()}</span>
                 <p className="px-3 py-1 text-sm font-bold text-gray-100 transition-colors duration-300 transform bg-green-500 rounded cursor-pointer hover:bg-gray-500" tabIndex="0" role="button">{category}</p>
             </div>
 

@@ -21,7 +21,7 @@ const JobDetails = () => {
         const jobId = _id;
         const buyerEmail = job?.email;
         const userEmail = user?.email;
-        if( buyerEmail === userEmail){
+        if (buyerEmail === userEmail) {
             return toast.error("Action not permitted")
         }
         // const currentDate = Date.now();
@@ -34,11 +34,11 @@ const JobDetails = () => {
         try {
             const { data } = await axios.post(`${import.meta.env.VITE_API_URL}/bid`, bidJob)
             console.log(data)
+            Swal.fire("Thanks for applying.");
         }
         catch (error) {
             console.log(error)
         }
-        Swal.fire("Thanks for applying.");
     }
 
     return (
@@ -51,7 +51,7 @@ const JobDetails = () => {
                 </div>
                 <div className="p-6">
                     <div>
-                        <span className="text-lg font-medium text-blue-600 uppercase dark:text-blue-400">Application deadline: {deadline}</span>
+                        <span className="text-lg font-medium text-blue-600 uppercase dark:text-blue-400">Application deadline: {new Date(deadline).toLocaleDateString()}</span>
                         <a href="#" className="block mt-2 text-xl font-bold text-gray-800 transition-colors duration-300 transform dark:text-white hover:text-gray-600 hover:underline" tabIndex="0" role="link">{title}</a>
                         <a href="#" className="block mt-2 text-lg font-semibold text-gray-800 transition-colors duration-300 transform dark:text-white hover:text-gray-600 hover:underline" tabIndex="0" role="link">Posted By: {posted_by}</a>
                         <p className="mt-2 text-sm text-gray-600 dark:text-gray-400">Job posted at: {posting_date}</p>
@@ -73,7 +73,7 @@ const JobDetails = () => {
                                 <input type="text" className="input w-full" defaultValue={user.displayName} readOnly />
                                 <label className="font-bold mb-2" htmlFor="">User Email</label> <br />
                                 <input type="text" className="input w-full" defaultValue={user.email} readOnly /><br />
-                                <input type="text" placeholder="Enter your resume link" className="input mt-3 input-bordered w-full"  required/>
+                                <input type="text" placeholder="Enter your resume link" className="input mt-3 input-bordered w-full" required />
                                 <input className="btn btn-outline btn-success w-full mt-4" type="submit" value="Submit Application" />
                             </form>
                             {/* <div>

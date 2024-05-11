@@ -3,35 +3,76 @@ import { AuthContext } from "../../components/AuthProvider/AuthProvider";
 import DatePicker from "react-datepicker";
 
 import "react-datepicker/dist/react-datepicker.css";
+import axios from "axios";
+import Swal from "sweetalert2";
+import { useNavigate } from "react-router-dom";
 
 
 const AddJob = () => {
     const [startDate, setStartDate] = useState(new Date());
-
+    const [endDate, setEndDate] = useState(new Date());
     const { user } = useContext(AuthContext);
+
+    const navigate = useNavigate();
+
+    //_id, posted_by, title, posting_date, deadline, min_salary, max_salary, applicants, category 
+    const handleAddJob = async (e) => {
+        e.preventDefault();
+        const form = e.target;
+        const title = form.jobTitle.value;
+        const category = form.jobCategory.value;
+        const userName = user?.displayName;
+        const email = user?.email;
+        const posting_date = startDate;
+        const deadline = endDate;
+        const min_salary = form.minSalary.value;
+        const max_salary = form.maxSalary.value;
+        const applicants = 0;
+        const posted_by = form.postedBy.value;
+        const description = form.jobDescription.value;
+        const photo = form.photoURL.value;
+
+        const newJob = {
+            posted_by, title, category, posting_date, deadline, min_salary, max_salary, applicants, description, userName, email, photo
+        }
+        // console.log(newJob)
+
+        try {
+            const { data } = await axios.post(`${import.meta.env.VITE_API_URL}/jobs`, newJob)
+            console.log(data)
+            if (data.insertedId) {
+                navigate("/my-job")
+                Swal.fire("Thanks for applying.");
+            }
+        }
+        catch (error) {
+            console.log(error)
+        }
+
+    }
 
     return (
         <div className="px-4 md:px-20 my-10">
             <h2 className="text-3xl font-bold text-center my-6">Post your job</h2>
-            <form className="border-2 border-gray-200 p-6 rounded-xl shadow-lg">
+            <form onSubmit={handleAddJob} className="border-2 border-gray-200 p-6 rounded-xl shadow-lg">
                 {/* Job title and jon category */}
                 <div className="md:flex mb-4">
                     <label className="form-control w-full ">
                         <div className="label">
                             <span className="label-text font-medium">Job Title</span>
                         </div>
-                        <input name="touristSpotName" type="text" placeholder="Job title" className="input input-bordered w-full " />
+                        <input name="jobTitle" type="text" placeholder="Job title" className="input input-bordered w-full " required />
                     </label>
                     <label className="form-control md:ml-4 w-full ">
                         <div className="label">
                             <span className="label-text font-medium">Job Category</span>
                         </div>
-                        <select className="border bg-transparent p-3 rounded-lg" name="countryList" id="countryList">
+                        <select className="border bg-transparent p-3 rounded-lg" name="jobCategory" id="jobCategory" required>
                             <option value="">Select Category</option>
-                            <option value="Bangladesh">Onsite Jobs</option>
-                            <option value="Thailand">Remote Jobs</option>
-                            <option value="Indonesia">Hybrid Jobs</option>
-                            <option value="Malaysia">Part Time Jobs</option>
+                            <option value="Onsite Job">Onsite Job</option>
+                            <option value="Remote Job">Remote Job</option>
+                            <option value="Hybrid Job">Hybrid Job</option>
+                            <option value="Part Time Job">Part Time Job</option>
                         </select>
                     </label>
                 </div>
@@ -41,13 +82,13 @@ const AddJob = () => {
                         <div className="label">
                             <span className="label-text font-medium">User Name</span>
                         </div>
-                        <input name="location" type="text" defaultValue={user?.displayName} className="input input-bordered w-full " readOnly />
+                        <input name="name" type="text" defaultValue={user?.displayName} className="input input-bordered w-full " readOnly />
                     </label>
                     <label className="form-control md:ml-4 w-full ">
                         <div className="label">
                             <span className="label-text font-medium">Email</span>
                         </div>
-                        <input name="photoURL" type="text" defaultValue={user?.email} className="input input-bordered w-full " readOnly />
+                        <input name="email" type="text" defaultValue={user?.email} className="input input-bordered w-full " readOnly />
                     </label>
                 </div>
                 {/* Minimum and maximum salary */}
@@ -56,13 +97,13 @@ const AddJob = () => {
                         <div className="label">
                             <span className="label-text font-medium">Minimum Salary</span>
                         </div>
-                        <input name="seasonality" type="text" placeholder="Minimum salary" className="input input-bordered w-full " />
+                        <input name="minSalary" type="text" placeholder="Minimum salary" className="input input-bordered w-full " required />
                     </label>
                     <label className="form-control md:ml-4 w-full ">
                         <div className="label">
                             <span className="label-text font-medium">Maximum Salary</span>
                         </div>
-                        <input name="averageCost" type="text" placeholder="Maximum Salary" className="input input-bordered w-full " />
+                        <input name="maxSalary" type="text" placeholder="Maximum Salary" className="input input-bordered w-full " required />
                     </label>
                 </div>
                 {/* job posting date and deadline */}
@@ -77,20 +118,34 @@ const AddJob = () => {
                         <div className="label">
                             <span className="label-text font-medium">Deadline</span>
                         </div>
-                        <DatePicker className="p-3 border rounded-lg w-full" selected={startDate} onChange={(date) => setStartDate(date)} />
+                        <DatePicker className="p-3 border rounded-lg w-full" selected={endDate} onChange={(date) => setEndDate(date)} />
                     </label>
                 </div>
                 <div className="md:flex mb-4">
-                    
+                    <label className="form-control w-full ">
+                        <div className="label">
+                            <span className="label-text font-medium">Posted By</span>
+                        </div>
+                        <input name="postedBy" type="text" placeholder="posted By" className="input input-bordered w-full " required />
+                    </label>
+                    <label className="form-control md:ml-4 w-full ">
+                        <div className="label">
+                            <span className="label-text font-medium">Photo URL</span>
+                        </div>
+                        <input name="photoURL" type="text" placeholder="PhotoURL" className="input input-bordered w-full " required />
+                    </label>
+                </div>
+                <div className="md:flex mb-4">
+
                     <label className="form-control w-full ">
                         <div className="label">
                             <span className="label-text font-medium">Job Description</span>
                         </div>
-                        <textarea name="shortDescription" type="text" placeholder="Job description Description" className="input input-bordered w-full " />
+                        <textarea name="jobDescription" type="text" placeholder="Job description" className="input input-bordered w-full " />
                     </label>
                 </div>
 
-                <input className="btn btn-success text-white w-full" type="submit" value="Add Place" />
+                <input className="btn btn-success text-white w-full" type="submit" value="Post" />
             </form>
         </div>
     );
