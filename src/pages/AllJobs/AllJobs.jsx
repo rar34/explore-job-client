@@ -1,8 +1,26 @@
-import { Link, useLoaderData } from "react-router-dom";
+import { useQuery } from "@tanstack/react-query";
+import { Link } from "react-router-dom";
 
 const AllJobs = () => {
-    const jobs = useLoaderData();
-    console.log(jobs)
+    // const jobs = useLoaderData();
+    // console.log(jobs)
+    const { isPending, error, isError, data: jobs } = useQuery({
+        queryKey: ['jobs'],
+        queryFn: async () => {
+            const res = await fetch(`${import.meta.env.VITE_API_URL}/jobs`);
+            return res.json();
+        }
+    })
+
+    if (isPending) {
+        return <div className='flex justify-center items-center text-3xl'><span className="loading loading-spinner loading-lg"></span></div>
+    }
+
+    if(isError){
+        return <p>{error.message}</p>
+    }
+
+    
     return (
         <div>
             <div className="overflow-x-auto">

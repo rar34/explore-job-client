@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 
 
 const JobCard = ({ job }) => {
-    const { posted_by, title, posting_date, deadline, min_salary, max_salary, applicants, category } = job || {};
+    const { _id, posted_by, title, posting_date, deadline, min_salary, max_salary, applicants, category } = job || {};
     return (
         <div className="max-w-2xl px-8 py-4 bg-base-100 rounded-lg border-2">
             <div className="flex items-center justify-between">
@@ -23,7 +23,7 @@ const JobCard = ({ job }) => {
 
                 <div className="flex items-center">
 
-                    <Link to=""><button className="btn btn-success text-white" tabIndex="0" role="link">View Details</button></Link>
+                    <Link to={`/job/${_id}`}><button className="btn btn-success text-white" tabIndex="0" role="link">View Details</button></Link>
                 </div>
             </div>
         </div>

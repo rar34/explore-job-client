@@ -48,15 +48,15 @@ const Register = () => {
     }
     return (
         <div className="my-14">
-            <div className="flex w-full max-w-sm mx-auto overflow-hidden bg-white rounded-lg shadow-lg dark:bg-gray-800 lg:max-w-4xl">
-                <div className="hidden bg-cover lg:block lg:w-1/2" style={{ backgroundImage: 'url(https://i.ibb.co/StKkGTB/andrej-lisakov-V2-Oy-Jt-Fq-Et-Y-unsplash.jpg)' }}></div>
+            <div className="flex w-full max-w-sm mx-auto overflow-hidden justify-center  bg-[#00385E] text-white rounded-lg shadow-lg dark:bg-gray-800 lg:max-w-4xl">
+                {/* <div className="hidden bg-cover lg:block lg:w-1/2"></div> */}
 
                 <div className="w-full px-6 py-8 md:px-8 lg:w-1/2">
                     <div className="flex justify-center mx-auto">
                         <img className="w-40" src="https://i.ibb.co/3NfPD4C/Career-Finder.png" alt="" />
                     </div>
 
-                    <p className="mt-3 text-xl text-center text-gray-600 dark:text-gray-200">
+                    <p className="mt-3 text-xl text-center text-gray-200">
                         Welcome back!
                     </p>
 
@@ -65,7 +65,7 @@ const Register = () => {
                     <div className="flex items-center justify-between mt-4">
                         <span className="w-1/5 border-b dark:border-gray-600 lg:w-1/4"></span>
 
-                        <a href="#" className="text-xl text-center text-gray-500 uppercase dark:text-gray-400 hover:underline">Sign Up</a>
+                        <a href="#" className="text-xl text-center text-gray-500 uppercase dark:text-gray-200 hover:underline">Sign Up</a>
 
                         <span className="w-1/5 border-b dark:border-gray-400 lg:w-1/4"></span>
                     </div>
@@ -73,14 +73,14 @@ const Register = () => {
                     <form onSubmit={handleSubmit(onSubmit)} className="card-body">
                         <div className="form-control" data-aos="fade-left" data-aos-delay="400">
                             <label className="label">
-                                <span className="label-text font-semibold">Name</span>
+                                <span className="label-text text-white font-semibold">Name</span>
                             </label>
                             <input type="text" placeholder="name" className="input input-bordered"
                                 {...register("name")} />
                         </div>
                         <div className="form-control" data-aos="fade-right" data-aos-delay="400">
                             <label className="label">
-                                <span className="label-text font-semibold">Email</span>
+                                <span className="label-text text-white font-semibold">Email</span>
                             </label>
                             <input type="email" placeholder="email" className="input input-bordered"
                                 {...register("email", { required: true })} />
@@ -88,7 +88,7 @@ const Register = () => {
                         </div>
                         <div className="form-control" data-aos="fade-left" data-aos-delay="400">
                             <label className="label">
-                                <span className="label-text font-semibold">PhotoURL</span>
+                                <span className="label-text text-white font-semibold">PhotoURL</span>
                             </label>
                             <input type="text" placeholder="photoURL" className="input input-bordered"
                                 {...register("photoURL")} />
@@ -96,7 +96,7 @@ const Register = () => {
                         {/* password field */}
                         <div className="form-control" data-aos="fade-right" data-aos-delay="400">
                             <label className="label">
-                                <span className="label-text font-semibold">Password</span>
+                                <span className="label-text text-white font-semibold">Password</span>
                             </label>
                             <div className="relative">
                                 <input type={showPassword ? "text" : "password"} placeholder="password" className="input w-full input-bordered"
@@ -118,7 +118,7 @@ const Register = () => {
                     <div className="flex items-center justify-between mt-4">
                         <span className="w-1/5 border-b dark:border-gray-600 md:w-1/4"></span>
 
-                        <Link to="/login" href="#" className="text-xs text-gray-500 uppercase dark:text-gray-400 hover:underline">or Login</Link>
+                        <Link to="/login" className="ext-lg btn btn-outline font-bold text-gray-200 uppercase dark:text-gray-400 hover:underline">or Login</Link>
 
                         <span className="w-1/5 border-b dark:border-gray-600 md:w-1/4"></span>
                     </div>

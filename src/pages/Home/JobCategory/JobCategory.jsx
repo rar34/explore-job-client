@@ -8,7 +8,7 @@ import { useQuery } from '@tanstack/react-query';
 
 const JobCategory = () => {
     // console.log(jobs)
-    const { isPending, data: jobs } = useQuery({
+    const { isPending, error, isError, data: jobs } = useQuery({
         queryKey: ['jobs'],
         queryFn: async () => {
             const res = await fetch(`${import.meta.env.VITE_API_URL}/jobs`);
@@ -18,6 +18,9 @@ const JobCategory = () => {
 
     if (isPending) {
         return <div className='flex justify-center items-center text-3xl'><span className="loading loading-spinner loading-lg"></span></div>
+    }
+    if (isError) {
+        return <p>{error.message}</p>
     }
 
     return (
