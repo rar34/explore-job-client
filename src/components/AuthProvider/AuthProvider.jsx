@@ -2,6 +2,7 @@ import { GoogleAuthProvider, createUserWithEmailAndPassword, onAuthStateChanged,
 import PropTypes from 'prop-types'
 import { createContext, useEffect, useState } from 'react';
 import auth from '../../firebase/firebase.config';
+import axios from 'axios';
 
 export const AuthContext = createContext(null);
 
@@ -46,16 +47,51 @@ const AuthProvider = ({ children }) => {
 
 
     // Observer
+    // useEffect(() => {
+    //     const unSubscribe = onAuthStateChanged(auth, (currentUser) => {
+    //         setUser(currentUser)
+    //         setLoading(false)
+    //         const user = { email: currentUser.email }
+    //         if (currentUser) {
+    //             axios.post(`${import.meta.env.VITE_API_URL}/jwt`, user, { withCredentials: true })
+    //                 .then(res => {
+    //                     console.log("token response", res.data)
+    //                 })
+    //         }
+
+    //     });
+    //     return () => {
+    //         unSubscribe();
+    //     }
+    // }, []);
+
     useEffect(() => {
-        const unSubscribe = onAuthStateChanged(auth, (user) => {
-            setUser(user)
+        const unsubscribe = onAuthStateChanged(auth, currentUser => {
+            const userEmail = currentUser?.email || user?.email;
+            const loggedUser = { email: userEmail }
+            console.log(loggedUser)
+            setUser(currentUser)
+            console.log(currentUser)
             setLoading(false)
 
-        });
+            if (currentUser) {
+                axios.post(`${import.meta.env.VITE_API_URL}/jwt`, loggedUser, { withCredentials: true })
+                    .then(res => {
+                        console.log(res.data)
+                    })
+            }
+            else {
+                axios.post(`${import.meta.env.VITE_API_URL}/logout`, loggedUser, { withCredentials: true })
+                    .then(res => {
+                        console.log(res.data)
+                    })
+            }
+
+        })
         return () => {
-            unSubscribe();
+            unsubscribe()
         }
-    }, []);
+    }, [user?.email])
 
 
     const authInfo = {

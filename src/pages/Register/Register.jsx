@@ -57,7 +57,7 @@ const Register = () => {
                     </div>
 
                     <p className="mt-3 text-xl text-center text-gray-200">
-                        Welcome back!
+                        Please SignUp
                     </p>
 
 

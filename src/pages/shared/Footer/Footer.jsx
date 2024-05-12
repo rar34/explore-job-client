@@ -2,7 +2,7 @@ import { FaFacebookSquare, FaGithubSquare, FaLinkedinIn, FaTwitterSquare } from 
 
 const Footer = () => {
     return (
-        <footer className="footer p-10 bg-base-200 text-base-content">
+        <footer className="footer p-10 bg-[#00385E] text-white">
             <aside>
                 <img className="w-40" src="https://i.ibb.co/3NfPD4C/Career-Finder.png" alt="" />
                 <p>Explore Job Ltd.<br />Providing reliable Service since 2000</p>

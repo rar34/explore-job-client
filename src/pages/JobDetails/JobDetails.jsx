@@ -1,16 +1,39 @@
 import { useContext } from "react";
-import { useLoaderData } from "react-router-dom";
+import { useLoaderData, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../components/AuthProvider/AuthProvider";
 import Swal from "sweetalert2";
 import axios from "axios";
 import { toast } from "react-toastify";
+// import { useQuery } from "@tanstack/react-query";
 
 const JobDetails = () => {
 
     const { user } = useContext(AuthContext);
+    const navigate = useNavigate();
 
     const job = useLoaderData();
     // console.log(job)
+
+    // const { isPending, error, isError, data: job } = useQuery({
+    //     queryKey: ['job'],
+    //     queryFn: async () => {
+    //         const res = await fetch(`${import.meta.env.VITE_API_URL}/job/${_id}`);
+    //         return res.json();
+    //     }
+    // })
+
+    // if (isPending) {
+    //     return <div className='flex justify-center items-center text-3xl'><span className="loading loading-spinner loading-lg"></span></div>
+    // }
+
+    // if (isError) {
+    //     return <p>{error.message}</p>
+    // }
+
+
+    // if (job.length === 0) {
+    //     return <p className="text-2xl font-bold text-red-500">No jobs available.........</p>
+    // }
 
     const { _id, posted_by, title, posting_date, deadline, min_salary, max_salary, applicants, category, photo, description } = job || {};
     // console.log(job.email)
@@ -35,6 +58,7 @@ const JobDetails = () => {
             const { data } = await axios.post(`${import.meta.env.VITE_API_URL}/bid`, bidJob)
             console.log(data)
             Swal.fire("Thanks for applying.");
+            navigate('/my-job')
         }
         catch (error) {
             console.log(error)
@@ -77,14 +101,7 @@ const JobDetails = () => {
                                 <input type="text" placeholder="Enter your resume link" className="input mt-3 input-bordered w-full" required />
                                 <input className="btn btn-outline btn-success w-full mt-4" type="submit" value="Submit Application" />
                             </form>
-                            {/* <div>
-                                <label className="font-bold mb-2" htmlFor="">User Name:</label> <br />
-                                <input type="text" className="input w-full" defaultValue={user.displayName} disabled />
-                                <label className="font-bold mb-2" htmlFor="">User Email</label> <br />
-                                <input type="text" className="input w-full" defaultValue={user.email} disabled /><br />
-                                <input type="text" placeholder="Enter your resume link" className="input mt-3 input-bordered w-full" />
-                                <button onClick={handleJobSubmit} className="btn btn-outline btn-success w-full mt-4">Submit Application</button>
-                            </div> */}
+                            
                         </div>
                     </div>
 

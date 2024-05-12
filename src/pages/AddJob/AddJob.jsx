@@ -52,20 +52,20 @@ const AddJob = () => {
     }
 
     return (
-        <div className="px-4 md:px-20 my-10">
+        <div className="px-4 md:px-20 my-10  p-6 rounded-xl">
             <h2 className="text-3xl font-bold text-center my-6">Post your job</h2>
-            <form onSubmit={handleAddJob} className="border-2 border-gray-200 p-6 rounded-xl shadow-lg">
+            <form onSubmit={handleAddJob} className="border-2 bg-[#00385E99] border-gray-200 p-6 rounded-xl shadow-lg">
                 {/* Job title and jon category */}
                 <div className="md:flex mb-4">
                     <label className="form-control w-full ">
                         <div className="label">
-                            <span className="label-text font-medium">Job Title</span>
+                            <span className="label-text font-medium text-white">Job Title</span>
                         </div>
                         <input name="jobTitle" type="text" placeholder="Job title" className="input input-bordered w-full " required />
                     </label>
                     <label className="form-control md:ml-4 w-full ">
                         <div className="label">
-                            <span className="label-text font-medium">Job Category</span>
+                            <span className="label-text font-medium text-white">Job Category</span>
                         </div>
                         <select className="border bg-transparent p-3 rounded-lg" name="jobCategory" id="jobCategory" required>
                             <option value="">Select Category</option>
@@ -80,13 +80,13 @@ const AddJob = () => {
                 <div className="md:flex mb-4">
                     <label className="form-control w-full ">
                         <div className="label">
-                            <span className="label-text font-medium">User Name</span>
+                            <span className="label-text font-medium text-white">User Name</span>
                         </div>
                         <input name="name" type="text" defaultValue={user?.displayName} className="input input-bordered w-full " readOnly />
                     </label>
                     <label className="form-control md:ml-4 w-full ">
                         <div className="label">
-                            <span className="label-text font-medium">Email</span>
+                            <span className="label-text font-medium text-white">Email</span>
                         </div>
                         <input name="email" type="text" defaultValue={user?.email} className="input input-bordered w-full " readOnly />
                     </label>
@@ -95,13 +95,13 @@ const AddJob = () => {
                 <div className="md:flex mb-4">
                     <label className="form-control w-full ">
                         <div className="label">
-                            <span className="label-text font-medium">Minimum Salary</span>
+                            <span className="label-text font-medium text-white">Minimum Salary</span>
                         </div>
                         <input name="minSalary" type="text" placeholder="Minimum salary" className="input input-bordered w-full " required />
                     </label>
                     <label className="form-control md:ml-4 w-full ">
                         <div className="label">
-                            <span className="label-text font-medium">Maximum Salary</span>
+                            <span className="label-text font-medium text-white">Maximum Salary</span>
                         </div>
                         <input name="maxSalary" type="text" placeholder="Maximum Salary" className="input input-bordered w-full " required />
                     </label>
@@ -110,13 +110,13 @@ const AddJob = () => {
                 <div className="md:flex mb-4">
                     <label className="form-control w-full ">
                         <div className="label">
-                            <span className="label-text font-medium">Job Posting Date: </span>
+                            <span className="label-text font-medium text-white">Job Posting Date: </span>
                         </div>
                         <DatePicker className="p-3 border rounded-lg w-full" selected={startDate} onChange={(date) => setStartDate(date)} />
                     </label>
                     <label className="form-control md:ml-4 w-full ">
                         <div className="label">
-                            <span className="label-text font-medium">Deadline</span>
+                            <span className="label-text font-medium text-white">Deadline</span>
                         </div>
                         <DatePicker className="p-3 border rounded-lg w-full" selected={endDate} onChange={(date) => setEndDate(date)} />
                     </label>
@@ -124,13 +124,13 @@ const AddJob = () => {
                 <div className="md:flex mb-4">
                     <label className="form-control w-full ">
                         <div className="label">
-                            <span className="label-text font-medium">Posted By</span>
+                            <span className="label-text font-medium text-white">Posted By</span>
                         </div>
                         <input name="postedBy" type="text" placeholder="posted By" className="input input-bordered w-full " required />
                     </label>
                     <label className="form-control md:ml-4 w-full ">
                         <div className="label">
-                            <span className="label-text font-medium">Photo URL</span>
+                            <span className="label-text font-medium text-white">Photo URL</span>
                         </div>
                         <input name="photoURL" type="text" placeholder="PhotoURL" className="input input-bordered w-full " required />
                     </label>
@@ -139,13 +139,13 @@ const AddJob = () => {
 
                     <label className="form-control w-full ">
                         <div className="label">
-                            <span className="label-text font-medium">Job Description</span>
+                            <span className="label-text font-medium text-white">Job Description</span>
                         </div>
                         <textarea name="jobDescription" type="text" placeholder="Job description" className="input input-bordered w-full " />
                     </label>
                 </div>
 
-                <input className="btn btn-success text-white w-full" type="submit" value="Post" />
+                <input className="btn btn-success bg-green-200 w-full" type="submit" value="Post" />
             </form>
         </div>
     );
