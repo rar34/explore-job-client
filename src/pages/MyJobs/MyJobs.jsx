@@ -3,6 +3,7 @@ import { AuthContext } from "../../components/AuthProvider/AuthProvider";
 // import { useQuery } from "@tanstack/react-query";
 import axios from "axios";
 import { toast } from "react-toastify";
+import { Link } from "react-router-dom";
 
 const MyJobs = () => {
 
@@ -72,7 +73,7 @@ const MyJobs = () => {
                                 <td>{new Date(job.posting_date).toLocaleDateString()}</td>
                                 <td>{new Date(job.deadline).toLocaleDateString()}</td>
                                 <td>{job.min_salary}-{job.max_salary}</td>
-                                <td><button className="btn btn-outline btn-success btn-sm">Update</button></td>
+                                <Link to={`/update/${job._id}`}><td><button className="btn btn-outline btn-success btn-sm">Update</button></td></Link>
                                 <td><button onClick={() => handleDelete(job._id)} className="btn btn-outline btn-success btn-sm">Delete</button></td>
                             </tr>)
                         }
