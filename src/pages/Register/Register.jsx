@@ -60,8 +60,6 @@ const Register = () => {
                         Please SignUp
                     </p>
 
-
-
                     <div className="flex items-center justify-between mt-4">
                         <span className="w-1/5 border-b dark:border-gray-600 lg:w-1/4"></span>
 
@@ -75,14 +73,14 @@ const Register = () => {
                             <label className="label">
                                 <span className="label-text text-white font-semibold">Name</span>
                             </label>
-                            <input type="text" placeholder="name" className="input input-bordered"
+                            <input type="text" placeholder="name" className="input text-black bg-gray-300 input-bordered"
                                 {...register("name")} />
                         </div>
                         <div className="form-control" data-aos="fade-right" data-aos-delay="400">
                             <label className="label">
                                 <span className="label-text text-white font-semibold">Email</span>
                             </label>
-                            <input type="email" placeholder="email" className="input input-bordered"
+                            <input type="email" placeholder="email" className="input text-black bg-gray-300 input-bordered"
                                 {...register("email", { required: true })} />
                             {errors.email && <span className="text-red-600">This field is required</span>}
                         </div>
@@ -90,7 +88,7 @@ const Register = () => {
                             <label className="label">
                                 <span className="label-text text-white font-semibold">PhotoURL</span>
                             </label>
-                            <input type="text" placeholder="photoURL" className="input input-bordered"
+                            <input type="text" placeholder="photoURL" className="input text-black bg-gray-300 input-bordered"
                                 {...register("photoURL")} />
                         </div>
                         {/* password field */}
@@ -99,7 +97,7 @@ const Register = () => {
                                 <span className="label-text text-white font-semibold">Password</span>
                             </label>
                             <div className="relative">
-                                <input type={showPassword ? "text" : "password"} placeholder="password" className="input w-full input-bordered"
+                                <input type={showPassword ? "text" : "password"} placeholder="password" className="input w-full text-black bg-gray-300 input-bordered"
                                     {...register("password", { required: true })} />
                                 <span onClick={() => setShowPassword(!showPassword)} className="absolute top-4 right-3">
                                     {

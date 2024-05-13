@@ -8,7 +8,7 @@ const Footer = () => {
         <div className=" p-10 bg-[#00385E] text-white">
             <footer className="footer">
                 <aside>
-                    <img className="w-40" src="https://i.ibb.co/3NfPD4C/Career-Finder.png" alt="" />
+                    <img className="w-40" src="https://i.ibb.co/k39Lw9v/Career-Finder.png" alt="" />
                     <p>Explore Job Ltd.<br />Providing reliable Service since 2000</p>
                 </aside>
                 <nav>

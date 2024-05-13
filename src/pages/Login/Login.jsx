@@ -79,7 +79,7 @@ const Login = () => {
                             <label className="label">
                                 <span className="label-text text-white">Email</span>
                             </label>
-                            <input type="email" placeholder="email" className="input input-bordered"
+                            <input type="email" placeholder="email" className="input text-black bg-gray-300 input-bordered"
                                 {...register("email", { required: true })} />
                             {errors.email && <span className="text-red-600">This field is required</span>}
                         </div>
@@ -87,7 +87,7 @@ const Login = () => {
                             <label className="label">
                                 <span className="label-text text-white">Password</span>
                             </label>
-                            <input type="password" placeholder="password" className="input input-bordered"
+                            <input type="password" placeholder="password" className="input text-black bg-gray-300 input-bordered"
                                 {...register("password", { required: true })} />
                             {errors.password && <span className="text-red-600">This field is required</span>}
                         </div>
