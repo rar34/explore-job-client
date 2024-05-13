@@ -10,11 +10,6 @@ const AppliedJobs = () => {
     const [sortBy, setSortBy] = useState("")
 
 
-    // useEffect(() => {
-    //     fetch(`${import.meta.env.VITE_API_URL}/appliedJobs/${user?.email}`, { credentials: 'include' })
-    //         .then(res => res.json())
-    //         .then(data => setJobs(data))
-    // }, [user])
 
     const { isPending, error, isError, data: jobs } = useQuery({
         queryKey: ['jobs'],
