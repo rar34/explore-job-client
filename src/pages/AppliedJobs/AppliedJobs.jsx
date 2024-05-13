@@ -1,69 +1,45 @@
-import { useContext, useEffect, useState } from "react";
+import { useContext, useState } from "react";
 import { AuthContext } from "../../components/AuthProvider/AuthProvider";
 // import { useQuery } from "@tanstack/react-query";
 import { Link } from "react-router-dom";
+import { useQuery } from "@tanstack/react-query";
 
 const AppliedJobs = () => {
-    const [jobs, setJobs] = useState([]);
+    // const [jobs, setJobs] = useState([]);
     const { user } = useContext(AuthContext);
     const [sortBy, setSortBy] = useState("")
 
 
-    useEffect(() => {
-        fetch(`${import.meta.env.VITE_API_URL}/appliedJobs/${user?.email}`, { credentials: 'include' })
-            .then(res => res.json())
-            .then(data => setJobs(data))
-    }, [user])
+    // useEffect(() => {
+    //     fetch(`${import.meta.env.VITE_API_URL}/appliedJobs/${user?.email}`, { credentials: 'include' })
+    //         .then(res => res.json())
+    //         .then(data => setJobs(data))
+    // }, [user])
 
+    const { isPending, error, isError, data: jobs } = useQuery({
+        queryKey: ['jobs'],
+        queryFn: async () => {
+            const res = await fetch(`${import.meta.env.VITE_API_URL}/appliedJobs/${user?.email}`, { credentials: 'include' });
+            return res.json();
+        }
+    })
+    // console.log(jobs)
+
+    if (isPending) {
+        return <div className='flex justify-center items-center text-3xl'><span className="loading loading-spinner loading-lg"></span></div>
+    }
+
+    if (isError) {
+        return <p>{error.message}</p>
+    }
 
     const handleSortChange = (e) => {
         const searchText = e.target.value;
         setSortBy(searchText);
-        // let sortedJobs = [...jobs];
 
-        
-        // if(searchText === ""){
-        //     setSortBy(jobs)
-        // }
-
-        // if(searchText === 'Onsite Job'){
-        //     const sortedJobs = jobs.filter(job => job.category === 'Onsite Job')
-        //     setSortBy(sortedJobs)
-        // }
-        // if(searchText === 'Remote Job'){
-        //     const sortedJobs = jobs.filter(job => job.category === 'Remote Job')
-        //     setSortBy(sortedJobs)
-        // }
-        // if(searchText === 'Hybrid Job'){
-        //     const sortedJobs = jobs.filter(job => job.category === 'Hybrid Job')
-        //     setSortBy(sortedJobs)
-        // }
-        // if(searchText === 'Part Time Job'){
-        //     const sortedJobs = jobs.filter(job => job.category === 'Part Time Job')
-        //     setSortBy(sortedJobs)
-        // }
-        
     };
 
     const filteredJobs = sortBy ? jobs.filter(job => job.category === sortBy) : jobs;
-
-
-    // const { isPending, error, isError, data: jobs } = useQuery({
-    //     queryKey: ['jobs'],
-    //     queryFn: async () => {
-    //         const res = await fetch(`${import.meta.env.VITE_API_URL}/appliedJobs/${user?.email}`, { credentials: 'include' });
-    //         return res.json();
-    //     }
-    // })
-    // // console.log(jobs)
-
-    // if (isPending) {
-    //     return <div className='flex justify-center items-center text-3xl'><span className="loading loading-spinner loading-lg"></span></div>
-    // }
-
-    // if (isError) {
-    //     return <p>{error.message}</p>
-    // }
 
 
     if (jobs.length === 0) {
