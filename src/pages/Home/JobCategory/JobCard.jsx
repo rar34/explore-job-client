@@ -1,7 +1,6 @@
 import { Link } from "react-router-dom";
 import PropTypes from 'prop-types'
 
-
 const JobCard = ({ job }) => {
     const { _id, posted_by, title, posting_date, deadline, min_salary, max_salary, applicants, category } = job || {};
     return (

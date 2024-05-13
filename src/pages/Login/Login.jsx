@@ -6,7 +6,7 @@ import { useForm } from "react-hook-form";
 import { FcGoogle } from "react-icons/fc";
 
 const Login = () => {
-    const { signInUser, googleLogin } = useContext(AuthContext);
+    const { signInUser, googleLogin, user, loading } = useContext(AuthContext);
     const navigate = useNavigate();
     const location = useLocation();
 
@@ -42,7 +42,7 @@ const Login = () => {
             })
     }
 
-
+    if (user || loading) {return}
 
     return (
         <div className="my-14">
@@ -61,9 +61,9 @@ const Login = () => {
                     {/* <button onClick={handleGoogleLogin} className="flex items-center justify-center w-full mt-4 text-gray-600 transition-colors duration-300 transform border rounded-lg dark:border-gray-700 dark:text-gray-200 hover:bg-gray-50 dark:hover:bg-gray-600">
                     <FcGoogle /><span className="w-5/6 px-4 py-3 font-bold text-white text-center">Login with Google</span>
                     </button> */}
-                   
-                        <button onClick={handleGoogleLogin} className="flex items-center w-full justify-center gap-2 text-xl btn btn-success btn-outline"><FcGoogle /> Login With Google</button>
-                    
+
+                    <button onClick={handleGoogleLogin} className="flex items-center w-full justify-center gap-2 text-xl btn btn-success btn-outline"><FcGoogle /> Login With Google</button>
+
 
                     <div className="flex items-center justify-between mt-4">
                         <span className="w-1/5 border-b dark:border-gray-600 lg:w-1/4"></span>

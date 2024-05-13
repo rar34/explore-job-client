@@ -58,10 +58,12 @@ const JobDetails = () => {
             const { data } = await axios.post(`${import.meta.env.VITE_API_URL}/bid`, bidJob)
             console.log(data)
             Swal.fire("Thanks for applying.");
-            navigate('/my-job')
+            navigate("/applied-jobs")
         }
         catch (error) {
             console.log(error)
+            toast.error(error.response.data)
+            navigate("/applied-jobs")
         }
     }
 
@@ -86,10 +88,13 @@ const JobDetails = () => {
                     {/* <button className="btn btn-outline btn-success mt-6">Apply Now</button> */}
 
                     {/* The button to open modal */}
-                    <label htmlFor="apply_job_modal" className="btn btn-outline btn-success mt-6">Apply Now</label>
+                    {/* <label htmlFor="apply_job_modal" className="btn btn-outline btn-success mt-6">Apply Now</label> */}
+                    {/* <button>
+                        <label htmlFor="apply_job_modal" className="btn btn-outline btn-success mt-6">Apply Now</label>
+                    </button> */}
 
                     {/* Put this part before </body> tag */}
-                    <input type="checkbox" id="apply_job_modal" className="modal-toggle" />
+                    {/* <input type="checkbox" id="apply_job_modal" className="modal-toggle" />
                     <div className="modal" role="dialog">
                         <div className="modal-box">
                             <h3 className="font-bold text-lg">Enter you resume url for submit application</h3>
@@ -101,9 +106,27 @@ const JobDetails = () => {
                                 <input type="text" placeholder="Enter your resume link" className="input mt-3 input-bordered w-full" required />
                                 <input className="btn btn-outline btn-success w-full mt-4" type="submit" value="Submit Application" />
                             </form>
-                            
+
                         </div>
-                    </div>
+                    </div> */}
+
+                    {/* Open the modal using document.getElementById('ID').showModal() method */}
+                    <button className="btn btn-outline btn-success" onClick={() => document.getElementById('my_modal_2').showModal()}>Apply Now</button>
+                    <dialog id="my_modal_2" className="modal">
+                        <div className="modal-box">
+                            <form onSubmit={handleJobSubmit}>
+                                <label className="font-bold mb-2" htmlFor="">User Name:</label> <br />
+                                <input type="text" className="input w-full" defaultValue={user.displayName} readOnly />
+                                <label className="font-bold mb-2" htmlFor="">User Email</label> <br />
+                                <input type="text" className="input w-full" defaultValue={user.email} readOnly /><br />
+                                <input type="text" placeholder="Enter your resume link" className="input mt-3 input-bordered w-full" required />
+                                <input className="btn btn-outline btn-success w-full mt-4" type="submit" value="Submit Application" />
+                            </form>
+                        </div>
+                        <form method="dialog" className="modal-backdrop">
+                            <button>close</button>
+                        </form>
+                    </dialog>
 
                 </div>
             </div>

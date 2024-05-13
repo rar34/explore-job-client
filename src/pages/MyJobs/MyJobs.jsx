@@ -1,55 +1,66 @@
-import { useContext, useEffect, useState } from "react";
+import { useContext } from "react";
 import { AuthContext } from "../../components/AuthProvider/AuthProvider";
-// import { useQuery } from "@tanstack/react-query";
 import axios from "axios";
-import { toast } from "react-toastify";
 import { Link } from "react-router-dom";
+import Swal from "sweetalert2";
+import { useQuery } from "@tanstack/react-query";
 
 const MyJobs = () => {
 
     const { user } = useContext(AuthContext);
-    const [jobs, setJobs] = useState([]);
-
-    // const { isPending, error, isError, data: jobs } = useQuery({
-    //     queryKey: ['jobs'],
-    //     queryFn: async () => {
-    //         const res = await fetch(`${import.meta.env.VITE_API_URL}/jobs/${user?.email}`, { credentials: 'include' });
-    //         return res.json();
-    //     }
-    // })
-    // console.log(jobs)
-
-    // if (isPending) {
-    //     return <div className='flex justify-center items-center text-3xl'><span className="loading loading-spinner loading-lg"></span></div>
-    // }
-
-    // if (isError) {
-    //     return <p>{error.message}</p>
-    // }
-
-    useEffect(() => {
-        getData();
-    }, [user])
+    // const [jobs, setJobs] = useState([]);
 
     const getData = async () => {
-        const { data } = await axios(`${import.meta.env.VITE_API_URL}/jobs/${user?.email}`)
-        setJobs(data)
+        const { data } = await axios(`${import.meta.env.VITE_API_URL}/jobs/${user?.email}`, { withCredentials: true })
+        return data;
     }
 
+    const { data: jobs = [], isPending, isError, error } = useQuery({
+        queryFn: () => getData(),
+        queryKey: ['jobs', user?.email]
+    })
+
+    if (isPending) {
+        return <div className='flex justify-center items-center text-3xl'><span className="loading loading-spinner loading-lg"></span></div>
+    }
+
+    if (isError) {
+        return <p>{error.message}</p>
+    }
 
     if (jobs.length === 0) {
         return <p className="text-2xl font-bold text-red-500">No jobs available.........</p>
     }
 
     const handleDelete = async id => {
-        try {
-            const { data } = await axios.delete(`${import.meta.env.VITE_API_URL}/job/${id}`)
-            console.log(data)
-            toast.success("Deleted successfully")
-            getData();
-        } catch (error) {
-            toast.error(error.message)
-        }
+
+        Swal.fire({
+            title: "Are you sure?",
+            text: "You won't be able to revert this!",
+            icon: "warning",
+            showCancelButton: true,
+            confirmButtonColor: "#3085d6",
+            cancelButtonColor: "#d33",
+            confirmButtonText: "Yes, delete it!"
+        }).then((result) => {
+            if (result.isConfirmed) {
+                fetch(`${import.meta.env.VITE_API_URL}/job/${id}`, {
+                    method: 'DELETE'
+                })
+                    .then(res => res.json())
+                    .then(data => {
+                        if (data.deletedCount > 0) {
+                            Swal.fire({
+                                title: "Deleted!",
+                                text: "Your job has been deleted.",
+                                icon: "success"
+                            });
+                            getData();
+                            // navigate("/all-tourists-spot")
+                        }
+                    })
+            }
+        });
     }
 
     return (

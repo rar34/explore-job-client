@@ -10,7 +10,7 @@ const AppliedJobs = () => {
     const { isPending, error, isError, data: jobs } = useQuery({
         queryKey: ['jobs'],
         queryFn: async () => {
-            const res = await fetch(`${import.meta.env.VITE_API_URL}/appliedJobs/${user?.email}`);
+            const res = await fetch(`${import.meta.env.VITE_API_URL}/appliedJobs/${user?.email}`, { credentials: 'include' });
             return res.json();
         }
     })
@@ -67,6 +67,7 @@ const AppliedJobs = () => {
                     </tbody>
                 </table>
             </div>
+
         </div>
     );
 };
