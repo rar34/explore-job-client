@@ -69,7 +69,7 @@ const AddJob = () => {
                         <div className="label">
                             <span className="label-text font-medium text-white">Job Category</span>
                         </div>
-                        <select className="border text-white bg-transparent p-3 rounded-lg" name="jobCategory" id="jobCategory" required>
+                        <select className="border bg-[#00385E99] text-white p-3 rounded-lg" name="jobCategory" id="jobCategory" required>
                             <option value="">Select Category</option>
                             <option value="Onsite Job">Onsite Job</option>
                             <option value="Remote Job">Remote Job</option>

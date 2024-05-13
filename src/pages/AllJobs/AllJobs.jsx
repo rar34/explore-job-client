@@ -1,4 +1,6 @@
 import { useQuery } from "@tanstack/react-query";
+import { data } from "autoprefixer";
+import { useState } from "react";
 // import { data } from "autoprefixer";
 // import { useState } from "react";
 import { Link } from "react-router-dom";
@@ -13,6 +15,7 @@ const AllJobs = () => {
         queryFn: async () => {
             const res = await fetch(`${import.meta.env.VITE_API_URL}/jobs`);
             // setJobs(data)
+            console.log(data)
             return res.json();
         }
     })

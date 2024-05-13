@@ -14,7 +14,7 @@ const AppliedJobs = () => {
             return res.json();
         }
     })
-    console.log(jobs)
+    // console.log(jobs)
 
     if (isPending) {
         return <div className='flex justify-center items-center text-3xl'><span className="loading loading-spinner loading-lg"></span></div>

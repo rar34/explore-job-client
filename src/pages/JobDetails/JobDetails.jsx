@@ -44,8 +44,14 @@ const JobDetails = () => {
         const jobId = _id;
         const buyerEmail = job?.email;
         const userEmail = user?.email;
+        const currentDate = new Date().toLocaleDateString();
+        console.log(currentDate)
         if (buyerEmail === userEmail) {
             return toast.error("Action not permitted")
+        }
+        if (currentDate > deadline) {
+            return toast.error('deadline is over')
+            
         }
         // const currentDate = Date.now();
         // console.log(currentDate)
@@ -85,40 +91,20 @@ const JobDetails = () => {
                         <p><span className="font-bold">Salary Range:</span> {min_salary}Tk - {max_salary}Tk</p>
                         <p className="font-bold">Applicants: {applicants}</p>
                     </div>
-                    {/* <button className="btn btn-outline btn-success mt-6">Apply Now</button> */}
 
-                    {/* The button to open modal */}
-                    {/* <label htmlFor="apply_job_modal" className="btn btn-outline btn-success mt-6">Apply Now</label> */}
-                    {/* <button>
-                        <label htmlFor="apply_job_modal" className="btn btn-outline btn-success mt-6">Apply Now</label>
-                    </button> */}
-
-                    {/* Put this part before </body> tag */}
-                    {/* <input type="checkbox" id="apply_job_modal" className="modal-toggle" />
-                    <div className="modal" role="dialog">
-                        <div className="modal-box">
-                            <h3 className="font-bold text-lg">Enter you resume url for submit application</h3>
-                            <form onSubmit={handleJobSubmit}>
-                                <label className="font-bold mb-2" htmlFor="">User Name:</label> <br />
-                                <input type="text" className="input w-full" defaultValue={user.displayName} readOnly />
-                                <label className="font-bold mb-2" htmlFor="">User Email</label> <br />
-                                <input type="text" className="input w-full" defaultValue={user.email} readOnly /><br />
-                                <input type="text" placeholder="Enter your resume link" className="input mt-3 input-bordered w-full" required />
-                                <input className="btn btn-outline btn-success w-full mt-4" type="submit" value="Submit Application" />
-                            </form>
-
-                        </div>
-                    </div> */}
 
                     {/* Open the modal using document.getElementById('ID').showModal() method */}
-                    <button className="btn btn-outline btn-success" onClick={() => document.getElementById('my_modal_2').showModal()}>Apply Now</button>
+                    <button className="btn btn-outline mt-3 btn-success" onClick={() => document.getElementById('my_modal_2').showModal()}>Apply Now</button>
                     <dialog id="my_modal_2" className="modal">
-                        <div className="modal-box">
+                        <div className="modal-box bg-[#00385E]">
+                            <h2 className="text-2xl text-white mb-3 text-center font-semibold">Please enter your resume link to apply for the job</h2>
+                            <hr className="mb-2" />
                             <form onSubmit={handleJobSubmit}>
-                                <label className="font-bold mb-2" htmlFor="">User Name:</label> <br />
-                                <input type="text" className="input w-full" defaultValue={user.displayName} readOnly />
-                                <label className="font-bold mb-2" htmlFor="">User Email</label> <br />
-                                <input type="text" className="input w-full" defaultValue={user.email} readOnly /><br />
+                                <label className="font-bold mb-2 text-white" htmlFor="">User Name:</label> <br />
+                                <input type="text" className="input w-full mb-3" defaultValue={user.displayName} readOnly />
+                                <label className="font-bold mb-2 text-white" htmlFor="">User Email</label> <br />
+                                <input type="text" className="input w-full mb-3" defaultValue={user.email} readOnly /><br />
+                                <label className="font-bold mb-2 text-white" htmlFor="">Resume Link:</label> <br />
                                 <input type="text" placeholder="Enter your resume link" className="input mt-3 input-bordered w-full" required />
                                 <input className="btn btn-outline btn-success w-full mt-4" type="submit" value="Submit Application" />
                             </form>
