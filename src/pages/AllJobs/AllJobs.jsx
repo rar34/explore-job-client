@@ -1,14 +1,9 @@
 import { useQuery } from "@tanstack/react-query";
 import { data } from "autoprefixer";
 import { useState } from "react";
-// import { data } from "autoprefixer";
-// import { useState } from "react";
 import { Link } from "react-router-dom";
 
 const AllJobs = () => {
-    // const jobs = useLoaderData();
-    // const [jobs, setJobs] = useState([]);
-    // console.log(jobs)
     const [searchQuery, setSearchQuery] = useState('');
 
     const { isPending, error, isError, data: jobs } = useQuery({

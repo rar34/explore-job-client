@@ -6,7 +6,7 @@ import { Link } from "react-router-dom";
 const AppliedJobs = () => {
     const [jobs, setJobs] = useState([]);
     const { user } = useContext(AuthContext);
-    const [sortBy, setSortBy] = useState(jobs)
+    const [sortBy, setSortBy] = useState("")
 
 
     useEffect(() => {
