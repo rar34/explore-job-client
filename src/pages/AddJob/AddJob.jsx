@@ -43,7 +43,7 @@ const AddJob = () => {
             console.log(data)
             if (data.insertedId) {
                 navigate("/my-jobs")
-                Swal.fire("Thanks for applying.");
+                Swal.fire("Your job is posted successfully");
             }
         }
         catch (error) {

@@ -3,15 +3,10 @@ import { AuthContext } from "../../components/AuthProvider/AuthProvider";
 // import { useQuery } from "@tanstack/react-query";
 import { useQuery } from "@tanstack/react-query";
 
-
-
 const AppliedJobs = () => {
-    // const [jobs, setJobs] = useState([]);
     const { user } = useContext(AuthContext);
     const [sortBy, setSortBy] = useState("")
-
-
-
+    
 
     const { isPending, error, isError, data: jobs } = useQuery({
         queryKey: ['jobs'],
@@ -46,7 +41,7 @@ const AppliedJobs = () => {
     return (
         <div>
             {/* <h2>Applied jobs {jobs.length}</h2> */}
-            
+
             <div className="text-center mb-6">
                 <span className="text-xl font-bold">Filter By: </span>
                 <select value={sortBy} onChange={handleSortChange} className="border text-lg font-medium bg-[#00385E] text-white p-3 rounded-lg" name="jobCategory" id="jobCategory" required>
@@ -57,7 +52,7 @@ const AppliedJobs = () => {
                     <option value="Part Time Job">Part Time Job</option>
                 </select>
             </div>
-            <div className="overflow-x-auto">
+            <div className="overflow-x-auto jobs-data">
                 <table className="table table-md">
                     <thead>
                         <tr>
@@ -66,7 +61,7 @@ const AppliedJobs = () => {
                             <th>Deadline</th>
                             <th>Salary Range</th>
                             <th>Job Category</th>
-                            <th>Total Applicants</th>
+                            <th>Posted By</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -77,14 +72,14 @@ const AppliedJobs = () => {
                                 <td>{new Date(job.deadline).toLocaleDateString()}</td>
                                 <td>{job.min_salary}-{job.max_salary}</td>
                                 <td>{job.category}</td>
-                                <td>{job.applicants}</td>
+                                <td>{job.posted_by}</td>
                             </tr>)
                         }
 
                     </tbody>
                 </table>
             </div>
-
+            
         </div>
     );
 };
