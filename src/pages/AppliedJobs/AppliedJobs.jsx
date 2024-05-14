@@ -1,7 +1,6 @@
 import { useContext, useState } from "react";
 import { AuthContext } from "../../components/AuthProvider/AuthProvider";
 // import { useQuery } from "@tanstack/react-query";
-import { Link } from "react-router-dom";
 import { useQuery } from "@tanstack/react-query";
 
 
@@ -67,7 +66,7 @@ const AppliedJobs = () => {
                             <th>Deadline</th>
                             <th>Salary Range</th>
                             <th>Job Category</th>
-                            <th></th>
+                            <th>Total Applicants</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -78,7 +77,7 @@ const AppliedJobs = () => {
                                 <td>{new Date(job.deadline).toLocaleDateString()}</td>
                                 <td>{job.min_salary}-{job.max_salary}</td>
                                 <td>{job.category}</td>
-                                <Link to={`/job/${job._id}`}><button className="btn bg-[#00385E] text-white" tabIndex="0" role="link">View Details</button></Link>
+                                <td>{job.applicants}</td>
                             </tr>)
                         }
 

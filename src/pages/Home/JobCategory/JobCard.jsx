@@ -13,7 +13,7 @@ const JobCard = ({ job }) => {
             <div className="mt-2">
                 <p href="#" className="text-xl font-bold" tabIndex="0" role="link">{title}</p>
                 <p className="mt-2  font-semibold ">Posted By: {posted_by}</p>
-                <p className="mt-2  font-medium ">Posted in: {posting_date}</p>
+                <p className="mt-2  font-medium ">Posted in: {new Date(posting_date).toLocaleDateString()}</p>
                 <p className="mt-2 text-sky-600 font-medium ">Salary Range: {min_salary}-{max_salary}</p>
             </div>
 

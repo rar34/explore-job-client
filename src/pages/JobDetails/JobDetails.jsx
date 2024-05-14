@@ -1,5 +1,5 @@
 import { useContext, useEffect, useState } from "react";
-import { useLoaderData, useNavigate, useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { AuthContext } from "../../components/AuthProvider/AuthProvider";
 import Swal from "sweetalert2";
 import axios from "axios";
@@ -35,7 +35,7 @@ const JobDetails = () => {
             const job = jobs.find(job => job._id === id);
             setSingleJob(job);
         }
-    }, [jobs]);
+    }, [jobs, id]);
 
     if (isPending) {
         return <div className='flex justify-center items-center text-3xl'><span className="loading loading-spinner loading-lg"></span></div>

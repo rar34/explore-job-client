@@ -25,7 +25,7 @@ const Login = () => {
                 navigate(location?.state || "/")
             })
             .catch(() => {
-                toast("invalid-credential")
+                return toast("invalid-credential")
             })
     }
 
