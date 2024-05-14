@@ -1,10 +1,12 @@
 import { Link } from "react-router-dom";
 import PropTypes from 'prop-types'
+import { motion } from "framer-motion";
+
 
 const JobCard = ({ job }) => {
     const { _id, posted_by, title, posting_date, deadline, min_salary, max_salary, applicants, category } = job || {};
     return (
-        <div className="max-w-2xl px-8 py-4 bg-base-100 rounded-lg border-2">
+        <motion.div initial={{ opacity: 0, translateY: 50 }} animate={{ opacity: 1, translateY: 0 }} transition={{ duration: 1 }} className="max-w-2xl px-8 py-4 bg-base-100 rounded-lg border-2">
             <div className="flex items-center justify-between">
                 <span className="text-sm font-light bg-gray-400  text-white rounded-md p-2">Deadline: {new Date(deadline).toLocaleDateString()}</span>
                 <p className="px-3 py-1 text-sm font-bold text-gray-100 transition-colors duration-300 transform bg-[#00385E99] rounded cursor-pointer hover:bg-gray-500" tabIndex="0" role="button">{category}</p>
@@ -25,7 +27,7 @@ const JobCard = ({ job }) => {
                     <Link to={`/job/${_id}`}><button className="btn bg-[#00385E] text-white" tabIndex="0" role="link">View Details</button></Link>
                 </div>
             </div>
-        </div>
+        </motion.div>
     );
 };
 
