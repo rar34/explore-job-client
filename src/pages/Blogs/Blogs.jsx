@@ -21,6 +21,58 @@ const Blogs = () => {
             <h2 className="italic text-2xl mb-4">Q. What is express js? What is Nest JS ?</h2>
             <p>Answer. <span className="font-bold">Express.js:</span>Express.js is a minimalist web framework for Node.js. It provides a robust set of features for building web applications and APIs, including routing, middleware support, template engines, and more. Express.js is highly flexible and unopinionated, allowing developers to structure their applications as they see fit.Express.js is widely used in the Node.js ecosystem and is popular for its simplicity and performance. It is a great choice for developers who prefer a lightweight framework and want full control over their applications architecture.</p>
             <p className="my-4"><span className="font-bold">NestJS:</span>NestJS is a progressive Node.js framework for building efficient, reliable, and scalable server-side applications. It is built on top of Express.js but adds more structure and features inspired by Angular, making it particularly suitable for building enterprise-grade applications.NestJS provides a modular and opinionated architecture that encourages best practices such as dependency injection, modularization, and separation of concerns. It comes with built-in support for features like GraphQL, WebSockets, microservices, and more. NestJS also leverages TypeScript, which brings static typing and other modern language features to Node.js development, enhancing developer productivity and code maintainability.NestJS is often preferred by developers who appreciate strong conventions, scalability, and maintainability in their projects. It is a good choice for building complex applications where structure and maintainability are essential.</p>
+            <div>
+                <h2 className="text-2xl my-3">Main Feature</h2>
+
+                <p>
+                    - This website is about job seeking website. User can see jobs and apply jobs from here.
+                </p>
+                <p>
+                    - Anyone can post job by login in. He or she can not apply who post the job.
+                </p>
+                <p>
+                    - If the deadline is over no one can apply for the job.
+                </p>
+                <p>
+                    - A beautiful and a footer is set in all page except error page.
+                </p>
+                <p>
+                    - User can login with email and password which he/she used when sign up. Also login using his/her google account.
+                </p>
+                <p>
+                    - All the information stored in mongoDB.
+                </p>
+                <p>
+                    - Fetch data from mongodb using tanstack query.
+                </p>
+                <p>
+                    - User who post the jobs can edit his/her jobs. Also can delete it.
+                </p>
+                <p>
+                    -  Also a theme toggling function implemented.
+                </p>
+                <p>
+                    -  secure data with jwt.
+                </p>
+                <p className="text-2xl my-3">
+                    Packages are used in this project:
+                </p>
+                <p>
+                   - framer motion package
+                </p>
+                <p>
+                   - react hook form
+                </p>
+                <p>
+                   - react to pdf
+                </p>
+                <p>
+                   - react date picker
+                </p>
+                <p>
+                   - Swiper JS
+                </p>
+            </div>
         </div>
     );
 };

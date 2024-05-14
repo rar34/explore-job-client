@@ -1,9 +1,10 @@
-import { useContext } from "react";
-import { useLoaderData, useNavigate } from "react-router-dom";
+import { useContext, useEffect, useState } from "react";
+import { useLoaderData, useNavigate, useParams } from "react-router-dom";
 import { AuthContext } from "../../components/AuthProvider/AuthProvider";
 import Swal from "sweetalert2";
 import axios from "axios";
 import { toast } from "react-toastify";
+import { useQuery } from "@tanstack/react-query";
 // import { useQuery } from "@tanstack/react-query";
 
 const JobDetails = () => {
@@ -11,65 +12,81 @@ const JobDetails = () => {
     const { user } = useContext(AuthContext);
     const navigate = useNavigate();
 
-    const job = useLoaderData();
+    // const job = useLoaderData();
     // console.log(job)
 
-    // const { isPending, error, isError, data: job } = useQuery({
-    //     queryKey: ['job'],
-    //     queryFn: async () => {
-    //         const res = await fetch(`${import.meta.env.VITE_API_URL}/job/${_id}`);
-    //         return res.json();
-    //     }
-    // })
+    const [singleJob, setSingleJob] = useState({});
 
-    // if (isPending) {
-    //     return <div className='flex justify-center items-center text-3xl'><span className="loading loading-spinner loading-lg"></span></div>
-    // }
+    // const job = useLoaderData();
+    // console.log(singleJob)
 
-    // if (isError) {
-    //     return <p>{error.message}</p>
-    // }
+    const { id } = useParams();
 
+    const { isPending, error, isError, data: jobs } = useQuery({
+        queryKey: ['job'],
+        queryFn: async () => {
+            const res = await fetch(`${import.meta.env.VITE_API_URL}/jobs`);
+            return res.json();
+        }
+    })
 
-    // if (job.length === 0) {
-    //     return <p className="text-2xl font-bold text-red-500">No jobs available.........</p>
-    // }
+    useEffect(() => {
+        if (jobs) {
+            const job = jobs.find(job => job._id === id);
+            setSingleJob(job);
+        }
+    }, [jobs]);
 
-    const { _id, posted_by, title, posting_date, deadline, min_salary, max_salary, applicants, category, photo, description } = job || {};
+    if (isPending) {
+        return <div className='flex justify-center items-center text-3xl'><span className="loading loading-spinner loading-lg"></span></div>
+    }
+
+    if (isError) {
+        return <p>{error.message}</p>
+    }
+
+    if (singleJob.length === 0) {
+        return <p className="text-2xl font-bold text-red-500">No jobs available.........</p>
+    }
+
+    const { _id, posted_by, title, posting_date, deadline, min_salary, max_salary, applicants, category, photo, description } = singleJob || {};
     // console.log(job.email)
 
 
     const handleJobSubmit = async (e) => {
         e.preventDefault();
         const jobId = _id;
-        const buyerEmail = job?.email;
+        const buyerEmail = singleJob?.email;
         const userEmail = user?.email;
+        const CurrentDeadline = new Date(deadline).toLocaleDateString();
         const currentDate = new Date().toLocaleDateString();
-        console.log(currentDate)
+        console.log(buyerEmail, userEmail)
         if (buyerEmail === userEmail) {
             return toast.error("Action not permitted")
         }
-        if (currentDate > deadline) {
+        else if (currentDate > CurrentDeadline) {
             return toast.error('deadline is over')
-            
+
         }
         // const currentDate = Date.now();
         // console.log(currentDate)
 
-        const bidJob = {
-            jobId, buyerEmail, userEmail, posted_by, title, posting_date, deadline, min_salary, max_salary, applicants, category
-        }
-        // console.log(bidJob)
-        try {
-            const { data } = await axios.post(`${import.meta.env.VITE_API_URL}/bid`, bidJob)
-            console.log(data)
-            Swal.fire("Thanks for applying.");
-            navigate("/applied-jobs")
-        }
-        catch (error) {
-            console.log(error)
-            toast.error(error.response.data)
-            navigate("/applied-jobs")
+        else {
+            const bidJob = {
+                jobId, buyerEmail, userEmail, posted_by, title, posting_date, deadline, min_salary, max_salary, applicants: applicants + 1, category
+            }
+            // console.log(bidJob)
+            try {
+                const { data } = await axios.post(`${import.meta.env.VITE_API_URL}/bid`, bidJob)
+                console.log(data)
+                Swal.fire("Thanks for applying.");
+                navigate("/applied-jobs")
+            }
+            catch (error) {
+                console.log(error)
+                toast.error(error.response.data)
+                navigate("/applied-jobs")
+            }
         }
     }
 

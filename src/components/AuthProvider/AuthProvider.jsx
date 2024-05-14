@@ -46,25 +46,6 @@ const AuthProvider = ({ children }) => {
     }
 
 
-    // Observer
-    // useEffect(() => {
-    //     const unSubscribe = onAuthStateChanged(auth, (currentUser) => {
-    //         setUser(currentUser)
-    //         setLoading(false)
-    //         const user = { email: currentUser.email }
-    //         if (currentUser) {
-    //             axios.post(`${import.meta.env.VITE_API_URL}/jwt`, user, { withCredentials: true })
-    //                 .then(res => {
-    //                     console.log("token response", res.data)
-    //                 })
-    //         }
-
-    //     });
-    //     return () => {
-    //         unSubscribe();
-    //     }
-    // }, []);
-
     useEffect(() => {
         const unsubscribe = onAuthStateChanged(auth, currentUser => {
             const userEmail = currentUser?.email || user?.email;

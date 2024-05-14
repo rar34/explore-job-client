@@ -56,7 +56,7 @@ const MyJobs = () => {
                                 icon: "success"
                             });
                             getData();
-                            // navigate("/all-tourists-spot")
+                            // navigate("/my-jobs")
                         }
                     })
             }

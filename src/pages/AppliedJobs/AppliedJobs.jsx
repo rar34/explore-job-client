@@ -4,10 +4,13 @@ import { AuthContext } from "../../components/AuthProvider/AuthProvider";
 import { Link } from "react-router-dom";
 import { useQuery } from "@tanstack/react-query";
 
+
+
 const AppliedJobs = () => {
     // const [jobs, setJobs] = useState([]);
     const { user } = useContext(AuthContext);
     const [sortBy, setSortBy] = useState("")
+
 
 
 
@@ -44,6 +47,7 @@ const AppliedJobs = () => {
     return (
         <div>
             {/* <h2>Applied jobs {jobs.length}</h2> */}
+            
             <div className="text-center mb-6">
                 <span className="text-xl font-bold">Filter By: </span>
                 <select value={sortBy} onChange={handleSortChange} className="border text-lg font-medium bg-[#00385E] text-white p-3 rounded-lg" name="jobCategory" id="jobCategory" required>
@@ -74,7 +78,7 @@ const AppliedJobs = () => {
                                 <td>{new Date(job.deadline).toLocaleDateString()}</td>
                                 <td>{job.min_salary}-{job.max_salary}</td>
                                 <td>{job.category}</td>
-                                <Link to={`/job/${job._id}`}><button className="btn bg-[#00385E] btn-sm text-white" tabIndex="0" role="link">View Details</button></Link>
+                                <Link to={`/job/${job._id}`}><button className="btn bg-[#00385E] text-white" tabIndex="0" role="link">View Details</button></Link>
                             </tr>)
                         }
 
