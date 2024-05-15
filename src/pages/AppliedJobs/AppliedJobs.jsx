@@ -1,12 +1,13 @@
-import { useContext, useState } from "react";
+import { useContext, useRef, useState } from "react";
 import { AuthContext } from "../../components/AuthProvider/AuthProvider";
 // import { useQuery } from "@tanstack/react-query";
 import { useQuery } from "@tanstack/react-query";
-
+import ReactToPrint from 'react-to-print';
 
 const AppliedJobs = () => {
     const { user } = useContext(AuthContext);
     const [sortBy, setSortBy] = useState("")
+    const ref = useRef();
 
     const { isPending, error, isError, data: jobs } = useQuery({
         queryKey: ['jobs'],
@@ -38,7 +39,7 @@ const AppliedJobs = () => {
         return <p className="text-2xl font-bold text-red-500">No jobs available.........</p>
     }
 
-    
+
 
 
     return (
@@ -55,8 +56,9 @@ const AppliedJobs = () => {
                     <option value="Part Time Job">Part Time Job</option>
                 </select>
             </div>
-            <div className="overflow-x-auto" id="jobs-data">
+            <div ref={ref} className="overflow-x-auto">
                 <table className="table table-md">
+                    <caption className="text-3xl font-semibold my-6">Your applied Job</caption>
                     <thead>
                         <tr>
                             <th>Job Title</th>
@@ -82,7 +84,9 @@ const AppliedJobs = () => {
                     </tbody>
                 </table>
             </div>
-            
+            <div className="text-center mt-14 mb-4">
+                <ReactToPrint trigger={() => <button className="btn btn-outline btn-success">Download Summary</button>} content={()=>ref.current} />
+            </div>
         </div>
     );
 };

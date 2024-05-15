@@ -9,7 +9,7 @@ import 'swiper/css/effect-fade';
 
 const Banner = () => {
     return (
-        <div className='my-4 md:min-h-[700px] bg-cover p-6'>
+        <div className='my-4 md:min-h-[700px] bg-cover'>
             {/* <div className='top-1/2 mt-10 right-10'>
                 <div className='text-right lg:mt-96'>
                     <h2 className='text-xl md:text-2xl lg:text-5xl mb-6 font-bold'>Begin Your Career Journey <br /> with Explore Job</h2>
@@ -48,7 +48,7 @@ const Banner = () => {
                         <div className="hero-content text-neutral-content">
                             <div className="">
                                 <h1 className="mb-5 text-3xl md:text-5xl font-bold">Discover Exciting Career Opportunities</h1>
-                                <p className="mb-5">Explore thrilling career prospects! Uncover diverse opportunities tailored to your ambitions. Start your journey towards a fulfilling profession today. Discover, grow, and thrive!</p>
+                                <p className="mb-5">Explore thrilling career prospects! Uncover diverse opportunities tailored to your ambitions. Start your journey towards a fulfilling profession today.</p>
                                 <a href='#allJobs' className="btn btn-success text-white">Explore More</a>
                             </div>
                         </div>
