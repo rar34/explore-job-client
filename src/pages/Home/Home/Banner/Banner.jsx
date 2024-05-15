@@ -9,7 +9,7 @@ import 'swiper/css/effect-fade';
 
 const Banner = () => {
     return (
-        <div className='my-4 md:min-h-[700px] bg-cover border-2 rounded-lg p-6'>
+        <div className='my-4 md:min-h-[700px] bg-cover p-6'>
             {/* <div className='top-1/2 mt-10 right-10'>
                 <div className='text-right lg:mt-96'>
                     <h2 className='text-xl md:text-2xl lg:text-5xl mb-6 font-bold'>Begin Your Career Journey <br /> with Explore Job</h2>
@@ -43,7 +43,7 @@ const Banner = () => {
                     </div>
                 </SwiperSlide>
                 <SwiperSlide>
-                    <div className="hero md:min-h-[750px]" style={{ backgroundImage: 'url(https://i.ibb.co/4pXRcrj/banner.jpg)' }}>
+                    <div className="hero md:min-h-[750px]" style={{ backgroundImage: 'url(https://i.ibb.co/5MBp7gJ/banner2.jpg)' }}>
                         <div className="hero-overlay bg-opacity-60"></div>
                         <div className="hero-content text-neutral-content">
                             <div className="">
@@ -55,7 +55,7 @@ const Banner = () => {
                     </div>
                 </SwiperSlide>
                 <SwiperSlide>
-                    <div className="hero md:min-h-[750px]" style={{ backgroundImage: 'url(https://i.ibb.co/4pXRcrj/banner.jpg)' }}>
+                    <div className="hero md:min-h-[750px]" style={{ backgroundImage: 'url(https://i.ibb.co/nRxLj93/banner3.jpg)' }}>
                         <div className="hero-overlay bg-opacity-60"></div>
                         <div className="hero-content text-neutral-content">
                             <div className="">
