@@ -3,10 +3,10 @@ import { AuthContext } from "../../components/AuthProvider/AuthProvider";
 // import { useQuery } from "@tanstack/react-query";
 import { useQuery } from "@tanstack/react-query";
 
+
 const AppliedJobs = () => {
     const { user } = useContext(AuthContext);
     const [sortBy, setSortBy] = useState("")
-    
 
     const { isPending, error, isError, data: jobs } = useQuery({
         queryKey: ['jobs'],
@@ -38,6 +38,9 @@ const AppliedJobs = () => {
         return <p className="text-2xl font-bold text-red-500">No jobs available.........</p>
     }
 
+    
+
+
     return (
         <div>
             {/* <h2>Applied jobs {jobs.length}</h2> */}
@@ -52,7 +55,7 @@ const AppliedJobs = () => {
                     <option value="Part Time Job">Part Time Job</option>
                 </select>
             </div>
-            <div className="overflow-x-auto jobs-data">
+            <div className="overflow-x-auto" id="jobs-data">
                 <table className="table table-md">
                     <thead>
                         <tr>

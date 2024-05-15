@@ -13,22 +13,25 @@ const UpdateJob = () => {
     // const { id } = useParams();
     // const [singleJob, setSingleJob] = useState({});
 
-    // const { data: jobs } = useQuery({
+    // const { isPending, data=[] } = useQuery({
     //     queryKey: ['jobs'],
     //     queryFn: async () => {
     //         const res = await axios(`${import.meta.env.VITE_API_URL}/jobs`);
     //         return res.json();
     //     }
     // })
-    // console.log(jobs)
+    // console.log(data)
+    // // if (isPending) {
+    // //     return <div className='flex justify-center items-center text-3xl'><span className="loading loading-spinner loading-lg"></span></div>
+    // // }
     // useEffect(() => {
     //     const getData = async () => {
-    //         const job = await jobs.filter(job => job._id === id)
+    //         const job = await data.filter(job => job._id === id)
     //         setSingleJob(job)
     //     }
     //     getData()
 
-    // }, [id, jobs])
+    // }, [id, data])
 
 
 
@@ -83,7 +86,7 @@ const UpdateJob = () => {
     return (
         <div className="px-4 md:px-20 my-10  p-6 rounded-xl">
             <h2 className="text-3xl font-bold text-center my-6">Update your job</h2>
-            <form onSubmit={handleUpdate} className="border-2 bg-[#00385E99] border-gray-200 p-6 rounded-xl shadow-lg">
+            <form onSubmit={handleUpdate} className="border-2 bg-[#00385E] border-gray-200 p-6 rounded-xl shadow-lg">
                 {/* Job title and jon category */}
                 <div className="md:flex mb-4">
                     <label className="form-control w-full ">
