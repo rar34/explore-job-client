@@ -29,6 +29,7 @@ const JobDetails = () => {
             return res.json();
         }
     })
+    // console.log(jobs)
 
     useEffect(() => {
         if (jobs) {

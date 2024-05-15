@@ -10,6 +10,29 @@ import { toast } from "react-toastify";
 const UpdateJob = () => {
     const job = useLoaderData();
     // console.log(job)
+    // const { id } = useParams();
+    // const [singleJob, setSingleJob] = useState({});
+
+    // const { data: jobs } = useQuery({
+    //     queryKey: ['jobs'],
+    //     queryFn: async () => {
+    //         const res = await axios(`${import.meta.env.VITE_API_URL}/jobs`);
+    //         return res.json();
+    //     }
+    // })
+    // console.log(jobs)
+    // useEffect(() => {
+    //     const getData = async () => {
+    //         const job = await jobs.filter(job => job._id === id)
+    //         setSingleJob(job)
+    //     }
+    //     getData()
+
+    // }, [id, jobs])
+
+
+
+    // console.log(singleJob)
 
     const { _id, posted_by, title, category, deadline, min_salary, max_salary, description, photo } = job || {};
 
@@ -17,7 +40,10 @@ const UpdateJob = () => {
     const [endDate, setEndDate] = useState(new Date(deadline) || new Date());
     const { user } = useContext(AuthContext);
 
+
     const navigate = useNavigate();
+
+
 
     const handleUpdate = async e => {
         e.preventDefault();
