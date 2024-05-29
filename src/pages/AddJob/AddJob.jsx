@@ -40,7 +40,7 @@ const AddJob = () => {
 
         try {
             const { data } = await axios.post(`${import.meta.env.VITE_API_URL}/jobs`, newJob)
-            console.log(data)
+            // console.log(data)
             if (data.insertedId) {
                 navigate("/my-jobs")
                 Swal.fire("Your job is posted successfully");

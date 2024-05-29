@@ -42,6 +42,9 @@ const Navbar = () => {
                 <li className="text-base"><NavLink style={({ isActive }) => {
                     return isActive ? { backgroundColor: "green" } : {};
                 }} to="/my-jobs">My Jobs</NavLink></li>
+                <li className="text-base"><NavLink style={({ isActive }) => {
+                    return isActive ? { backgroundColor: "green" } : {};
+                }} to="/blog-post">Blog Post</NavLink></li>
             </>
         }
         <li className="text-base"><NavLink style={({ isActive }) => {
