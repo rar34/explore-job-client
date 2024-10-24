@@ -32,7 +32,7 @@ const BlogPost = () => {
     }
 
     return (
-        <div className="px-4 md:px-20 my-10  p-6 rounded-xl">
+        <div className="px-4 md:px-20 my-10 container mx-auto p-6 rounded-xl">
             <h2 className="text-3xl font-bold text-center my-6">Post your Blogs</h2>
             <form onSubmit={handleAddBlog} className="border-2 bg-[#00385E99] border-gray-200 p-6 md:w-3/4 mx-auto rounded-xl shadow-lg">
 

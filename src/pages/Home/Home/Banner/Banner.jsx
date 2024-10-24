@@ -9,7 +9,7 @@ import 'swiper/css/effect-fade';
 
 const Banner = () => {
     return (
-        <div className='my-4 md:min-h-[700px] bg-cover'>
+        <div className='container mx-auto my-4 md:min-h-[700px] bg-cover'>
             
              <div>
                 <Swiper

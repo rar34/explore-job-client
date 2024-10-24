@@ -47,7 +47,7 @@ const Register = () => {
             })
     }
     return (
-        <div className="my-14">
+        <div className="my-14 container mx-auto">
             <div className="flex w-full max-w-sm mx-auto overflow-hidden justify-center  bg-[#00385E] text-white rounded-lg shadow-lg dark:bg-gray-800 lg:max-w-4xl">
                 {/* <div className="hidden bg-cover lg:block lg:w-1/2"></div> */}
 

@@ -43,7 +43,7 @@ const AllJobs = () => {
 
 
     return (
-        <div>
+        <div className="container mx-auto pb-6">
             <div className="flex justify-center my-10">
                 <label className="input rounded-none rounded-l-lg input-bordered flex items-center gap-2">
                     <input value={searchText} onChange={handleSearchChange} name="searchText" type="text" className="grow" placeholder="Search your job" />

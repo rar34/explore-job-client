@@ -43,7 +43,7 @@ const AppliedJobs = () => {
 
 
     return (
-        <div>
+        <div className="container mx-auto">
             {/* <h2>Applied jobs {jobs.length}</h2> */}
 
             <div className="text-center mb-6">

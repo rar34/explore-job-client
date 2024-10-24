@@ -1,5 +1,5 @@
 import { useQuery } from "@tanstack/react-query";
-import { useEffect, useState } from "react";
+// import { useEffect, useState } from "react";
 
 const Blogs = () => {
     // const [blogs, setBlogs] = useState([]);
@@ -32,7 +32,7 @@ const Blogs = () => {
 
 
     return (
-        <div>
+        <div className="container mx-auto">
             <div className="my-10">
                 <h2 className="italic text-2xl mb-4">Q. What is an access token and refresh token? How do they work and where should we store them on the client side?</h2>
                 <p>Answer. <span className="font-bold">Access Token:</span>An access token is a credential used to access protected resources on behalf of the user. It is typically a string that represents the authorization granted to the client to access specific resources. Access tokens have a limited lifespan, typically ranging from minutes to hours, after which they expire.</p>

@@ -1,7 +1,7 @@
 
 const JobsFeatures = () => {
     return (
-        <div className="my-10">
+        <div className="my-10 bg-[#00385E1F]">
             <div className="container flex flex-col px-6 py-10 mx-auto space-y-6 lg:h-[32rem] lg:py-16 lg:flex-row-reverse lg:items-center">
                 <div className="w-full lg:w-1/2">
                     <div className="lg:max-w-lg">

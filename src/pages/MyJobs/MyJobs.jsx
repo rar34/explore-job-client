@@ -64,7 +64,7 @@ const MyJobs = () => {
     }
 
     return (
-        <div>
+        <div className="container mx-auto">
             <h2>My jobs list</h2>
             <div className="overflow-x-auto">
                 <table className="table table-md">
